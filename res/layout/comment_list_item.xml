@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              android:layout_width="match_parent"
+              android:layout_height="match_parent"
+              android:orientation="vertical"
+              android:background="#FFF" >
+
+        <LinearLayout
+                android:layout_marginLeft="10dp"
+                android:layout_width="match_parent"
+                      android:layout_height="wrap_content"
+                      android:orientation="horizontal"
+                      >
+            <FrameLayout
+                    android:layout_width="35dp"
+                    android:layout_height="35dp" >
+                <ImageView
+                        android:id="@+id/comment_list_item_photo"
+                        android:layout_width="35dp"
+                        android:layout_height="35dp"
+                        android:src="@drawable/txhc"
+                        android:adjustViewBounds="true"
+                        android:scaleType="centerCrop"/>
+
+
+                <ImageView
+                        android:background="#0000"
+                        android:src="@drawable/round_corner"
+                        android:scaleType="centerCrop"
+                        android:layout_width="35dp"
+                        android:layout_height="35dp"
+                        />
+            </FrameLayout>
+            <!--<ImageView android:layout_width="35dp"-->
+                       <!--android:layout_height="35dp"-->
+                       <!--android:adjustViewBounds="true"-->
+                       <!--android:id="@+id/comment_list_item_photo"-->
+                       <!--android:src="@drawable/txhc"/>-->
+            <LinearLayout android:layout_width="wrap_content"
+                           android:layout_height="wrap_content"
+                           android:layout_weight="1"
+                           android:orientation="vertical"
+                           android:layout_marginTop="5dp"
+                           android:layout_marginLeft="5dp">
+            <LinearLayout android:layout_width="wrap_content"
+                           android:layout_height="match_parent"
+                           android:orientation="horizontal"
+                           android:layout_weight="1">
+
+            <TextView android:layout_width="wrap_content"
+                      android:layout_height="wrap_content"
+                      android:text="name"
+                      android:id="@+id/comment_list_item_name"
+                      android:textSize="15sp"
+                      android:textColor="#000000"/>
+            <TextView android:layout_width="match_parent"
+                      android:layout_height="match_parent"
+                      android:id="@+id/comment_list_item_content"
+                      android:textSize="15sp"
+                      android:text=":1232123131213"/>
+
+        </LinearLayout>
+
+            <TextView android:layout_width="match_parent"
+                      android:layout_height="match_parent"
+                      android:text="2012-10-10"
+                      android:id="@+id/comment_list_item_time"
+                      android:textSize="14sp"
+                      android:singleLine="true"
+                      />
+
+        </LinearLayout>
+
+        </LinearLayout>
+
+
+
+
+</LinearLayout>
+
+

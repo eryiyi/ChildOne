@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              android:orientation="vertical"
+              android:layout_width="match_parent"
+              android:layout_height="match_parent"
+              android:background="#f7f7f7">
+    <LinearLayout android:layout_width="match_parent"
+                  android:layout_height="wrap_content"
+                  android:background="#ffffff"
+                  android:padding="10dp"
+                  android:gravity="center_vertical"
+                  android:orientation="horizontal">
+        <ImageView android:layout_width="100dp"
+                   android:layout_height="60dp"
+                   android:src="@drawable/ic_launcher"
+                   android:id="@+id/giftpic"
+                   android:adjustViewBounds="true"/>
+        <LinearLayout android:layout_width="wrap_content"
+                      android:layout_height="wrap_content"
+                      android:orientation="vertical"
+                      android:layout_weight="1"
+                      android:layout_marginLeft="10dp">
+            <LinearLayout android:layout_width="wrap_content"
+                          android:layout_height="wrap_content"
+                          android:orientation="horizontal">
+                <TextView android:layout_width="wrap_content"
+                          android:layout_height="wrap_content"
+                          android:text="相册name"
+                          android:textSize="16sp"
+                          android:textColor="#333333"
+                          android:id="@+id/gifttitle"
+                          android:layout_marginLeft="5dp"/>
+                <TextView android:layout_width="wrap_content"
+                          android:text="(5张)"
+                          android:id="@+id/phosnumber"
+                          android:layout_marginLeft="10dp"
+                          android:layout_height="wrap_content"/>
+            </LinearLayout>
+            <TextView android:layout_width="wrap_content"
+                      android:text="2014-09-20 10:00"
+                      android:layout_marginLeft="5dp"
+                      android:id="@+id/datetimephot"
+                      android:layout_marginTop="10dp"
+                      android:layout_height="wrap_content"/>
+        </LinearLayout>
+        <LinearLayout android:layout_width="wrap_content"
+                      android:layout_height="match_parent"
+                      android:orientation="vertical"
+                      android:id="@+id/duihuanliner"
+                      android:gravity="center_vertical">
+            <ImageView android:layout_width="wrap_content"
+                       android:layout_height="wrap_content"
+                       android:layout_marginRight="10dp"
+                       android:id="@+id/detailphoto"
+                       android:src="@drawable/right"/>
+
+        </LinearLayout>
+    </LinearLayout>
+
+</LinearLayout>

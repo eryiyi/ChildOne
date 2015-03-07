@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              android:orientation="vertical"
+              android:background="#f7f7f7"
+              android:layout_width="match_parent"
+              android:layout_height="match_parent">
+    <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="45dp"
+            android:background="@drawable/top_background"
+            android:gravity="center_vertical"
+            >
+        <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:src="@drawable/ceshi_05"
+                android:paddingRight="10dp"
+                android:paddingLeft="15dp"
+                android:background="@drawable/top_back_select"
+                android:id="@+id/notification_list_back" />
+        <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="18sp"
+                android:textColor="@color/login_main_bt_title_color"
+                android:text="通知列表"
+                android:layout_centerHorizontal="true"
+                android:layout_centerVertical="true"
+                />
+    </RelativeLayout>
+    <ListView android:layout_width="match_parent"
+              android:layout_height="wrap_content"
+            android:id="@+id/notification_listview"
+            android:divider="#00000000"
+            android:scrollingCache="false"
+            android:fadingEdge="none"
+            android:dividerHeight="10dp">
+
+    </ListView>
+</LinearLayout>

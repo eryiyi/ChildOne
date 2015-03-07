@@ -1,0 +1,37 @@
+<component name="libraryTable">
+  <library name="android-support-v4">
+    <CLASSES>
+      <root url="jar://$PROJECT_DIR$/libs/android-support-v4.jar!/" />
+      <root url="jar://$PROJECT_DIR$/libs/android_api_1.1_forsdk.jar!/" />
+      <root url="jar://$PROJECT_DIR$/libs/BaiduLBS_Android.jar!/" />
+      <root url="jar://$PROJECT_DIR$/libs/com.umeng.message.lib.jar!/" />
+      <root url="jar://$PROJECT_DIR$/libs/galaxy_mini.jar!/" />
+      <root url="jar://$PROJECT_DIR$/libs/gson-2.0.jar!/" />
+      <root url="jar://$PROJECT_DIR$/libs/HMSDK.jar!/" />
+      <root url="jar://$PROJECT_DIR$/libs/httpclient-4.3.5.jar!/" />
+      <root url="jar://$PROJECT_DIR$/libs/httpcore-4.3.2.jar!/" />
+      <root url="jar://$PROJECT_DIR$/libs/httpmime-4.3.5.jar!/" />
+      <root url="jar://$PROJECT_DIR$/libs/jaudiotagger-2.0.3.jar!/" />
+      <root url="jar://$PROJECT_DIR$/libs/javacpp.jar!/" />
+      <root url="jar://$PROJECT_DIR$/libs/javacv.jar!/" />
+      <root url="jar://$PROJECT_DIR$/libs/SocialSDK_QQZone_1.jar!/" />
+      <root url="jar://$PROJECT_DIR$/libs/SocialSDK_QQZone_2.jar!/" />
+      <root url="jar://$PROJECT_DIR$/libs/SocialSDK_QQZone_3.jar!/" />
+      <root url="jar://$PROJECT_DIR$/libs/SocialSDK_Sina.jar!/" />
+      <root url="jar://$PROJECT_DIR$/libs/SocialSDK_tencentWB_1.jar!/" />
+      <root url="jar://$PROJECT_DIR$/libs/SocialSDK_tencentWB_2.jar!/" />
+      <root url="jar://$PROJECT_DIR$/libs/SocialSDK_tencentWB_3.jar!/" />
+      <root url="jar://$PROJECT_DIR$/libs/SocialSDK_WeiXin_1.jar!/" />
+      <root url="jar://$PROJECT_DIR$/libs/SocialSDK_WeiXin_2.jar!/" />
+      <root url="jar://$PROJECT_DIR$/libs/umeng-analytics-v5.2.4.jar!/" />
+      <root url="jar://$PROJECT_DIR$/libs/umeng-update-v2.4.2.jar!/" />
+      <root url="jar://$PROJECT_DIR$/libs/umeng_social_sdk.jar!/" />
+      <root url="jar://$PROJECT_DIR$/libs/universal-image-loader-1.9.2.jar!/" />
+      <root url="jar://$PROJECT_DIR$/libs/volley.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES>
+      <root url="jar://$PROJECT_DIR$/libs/volley.jar!/tests/src" />
+    </SOURCES>
+  </library>
+</component>

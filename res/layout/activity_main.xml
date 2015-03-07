@@ -1,0 +1,82 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                android:layout_width="match_parent"
+                android:orientation="vertical"
+                android:layout_weight="1"
+                android:background="@drawable/baiban"
+                android:layout_height="fill_parent" >
+    <LinearLayout android:layout_width="match_parent"
+                  android:orientation="vertical"
+                  android:layout_weight="1"
+                  android:background="@drawable/top_background"
+                  android:layout_height="0dp">
+            <LinearLayout android:layout_width="match_parent"
+                          android:layout_marginTop="5dp"
+                          android:orientation="horizontal"
+                          android:layout_height="wrap_content">
+                <ImageView android:layout_width="wrap_content"
+                           android:src="@drawable/center_left"
+                           android:id="@+id/setmenu"
+                           android:layout_marginLeft="10dp"
+                           android:layout_height="wrap_content"/>
+                <LinearLayout android:layout_width="wrap_content"
+                              android:layout_weight="1"
+                              android:layout_gravity="center"
+                              android:gravity="center"
+                              android:layout_height="wrap_content">
+                    <com.xiaogang.ChildOne.widget.CircleImageView
+                               android:layout_width="wrap_content"
+                               android:id="@+id/tx"
+                               android:src="@drawable/center_top"
+                               android:maxWidth="35dp"
+                               android:maxHeight="35dp"
+                               android:layout_height="wrap_content"/>
+                    <TextView android:layout_width="wrap_content"
+                              android:text="小刚爸"
+                              android:id="@+id/titlename"
+                              android:textColor="@color/bq_bg"
+                              android:layout_marginLeft="20dp"
+                              android:layout_marginRight="20dp"
+                              android:layout_height="wrap_content"/>
+                    <ImageView android:layout_width="wrap_content"
+                               android:src="@drawable/center_select"
+                               android:layout_height="wrap_content"/>
+                </LinearLayout>
+
+                <ImageView android:layout_width="wrap_content"
+                           android:src="@drawable/center_right"
+                           android:id="@+id/message"
+                           android:layout_marginRight="10dp"
+                           android:layout_height="wrap_content"/>
+            </LinearLayout>
+            <LinearLayout android:layout_width="match_parent"
+                          android:layout_weight="1"
+                          android:layout_marginTop="20dp"
+                          android:layout_height="wrap_content">
+
+            </LinearLayout>
+            <LinearLayout android:layout_width="match_parent"
+                          android:gravity="bottom"
+                          android:layout_height="wrap_content">
+                <ImageView android:layout_width="match_parent"
+                           android:src="@drawable/center_ad"
+                           android:layout_height="wrap_content"/>
+            </LinearLayout>
+        </LinearLayout>
+
+
+    <LinearLayout android:layout_width="match_parent"
+                  android:orientation="vertical"
+                  android:layout_weight="1"
+                  android:layout_height="0dp">
+        <android.support.v4.view.ViewPager
+                android:id="@+id/vPager"
+                android:layout_weight="1"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_gravity="center"
+                android:flipInterval="30"
+                android:persistentDrawingCache="animation" />
+
+    </LinearLayout>
+
+</LinearLayout>

@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="#f1f1f1" >
+
+
+	    <!-- 列表内容 -->
+	    <LinearLayout android:layout_width="match_parent"
+	        android:layout_height="wrap_content"
+	        android:orientation="vertical"
+            android:padding="10dp"
+            android:id="@+id/liner"
+            android:background="@drawable/zhuye_item_select"
+	        >
+	        <LinearLayout android:layout_width="match_parent"
+	            android:layout_height="wrap_content"
+	            android:orientation="horizontal"
+	            android:layout_margin="5dp">
+	            <ImageView android:layout_width="60dp"
+	                android:layout_height="60dp"
+	                android:adjustViewBounds="true"
+                    android:id="@+id/pic"
+	                android:src="@drawable/txhc"/>
+	            -<LinearLayout android:layout_width="wrap_content"
+	                android:layout_height="wrap_content"
+	                android:layout_weight="1"
+	                android:orientation="vertical"
+	                android:layout_marginLeft="5dp">
+                    -<LinearLayout android:layout_width="wrap_content"
+                                   android:layout_height="match_parent"
+                                   android:orientation="horizontal"
+                                   android:layout_weight="1">
+
+                         <TextView android:layout_width="wrap_content"
+                                  android:layout_height="wrap_content"
+                                  android:text="name"
+                                  android:id="@+id/name"
+                                  android:textSize="16sp"
+                                  android:textColor="#000000"/>
+
+                     </LinearLayout>
+
+	                <TextView android:layout_width="wrap_content"
+	                    android:layout_height="wrap_content"
+	                    android:text="gaunxi"
+                        android:id="@+id/guanxi"
+	                    android:textSize="12sp"
+                        />
+
+	                <TextView android:layout_width="match_parent"
+	                    android:layout_height="match_parent"
+	                    android:text="2013-05-01"
+                        android:id="@+id/mobile"
+	                    android:textSize="12sp"
+                        android:singleLine="true"
+	                    android:textColor="#333333"/>
+
+	            </LinearLayout>
+
+	        </LinearLayout>
+
+	        
+	        
+	        
+	    </LinearLayout>
+    <ImageView android:layout_width="match_parent"
+               android:layout_height="0.1dp"
+               android:background="#d1d1d1"/>
+        <LinearLayout android:layout_width="match_parent"
+                      android:layout_height="wrap_content"
+                      android:orientation="horizontal"
+                >
+            <!--<TextView android:layout_width="wrap_content"-->
+                      <!--android:layout_height="match_parent"-->
+                      <!--android:id="@+id/musicname"-->
+                      <!--android:text="音乐"/>-->
+            <!--<ImageView android:layout_width="wrap_content"-->
+                       <!--android:layout_height="wrap_content"-->
+                       <!--android:translationX="625px"-->
+                       <!--android:id="@+id/musicdelete"-->
+                       <!--android:src="@drawable/zhuye_ss1"-->
+                    <!--/>-->
+
+         </LinearLayout>
+
+	</LinearLayout>
+    
+

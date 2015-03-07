@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              android:orientation="vertical"
+              android:background="#FFF"
+              android:layout_width="match_parent"
+              android:layout_height="match_parent">
+
+        <RelativeLayout
+            android:id="@+id/lp_01"
+            android:layout_width="match_parent"
+            android:layout_height="45dp"
+            android:background="@drawable/top_background"
+            android:gravity="center_vertical"
+            android:layout_marginBottom="5dp"
+            >
+        <ImageView
+                android:id="@+id/publish_record_back"
+                android:layout_width="wrap_content"
+                android:layout_height="35dp"
+                android:src="@drawable/top_back"
+                android:paddingLeft="15dp"
+                android:paddingTop="10dp"
+                android:paddingRight="10dp"/>
+        <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:text="发布录音"
+                android:gravity="center_vertical"
+                android:layout_centerHorizontal="true"
+                android:textColor="#ffffff"
+                android:textSize="18sp"
+                android:id="@+id/mum_setting_title"
+                />
+        <TextView
+                android:id="@+id/publish_record_run"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="18sp"
+                android:textColor="#ffffff"
+                android:layout_marginRight="10dp"
+                android:text="发布"
+                android:layout_centerVertical="true"
+                android:layout_alignParentRight="true"/>
+        </RelativeLayout>
+
+        <LinearLayout
+                android:orientation="horizontal"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+                <TextView
+                        android:layout_marginLeft="10dp"
+                        android:textSize="18sp"
+                        android:gravity="center"
+                        android:text="选择宝宝: "
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"/>
+                <Spinner
+                        android:id="@+id/publish_record_spinner"
+                        android:layout_marginLeft="20dp"
+                        android:layout_width="200dp"
+                        android:layout_height="wrap_content">
+                </Spinner>
+        </LinearLayout>
+        <EditText
+                android:id="@+id/publish_record_content"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
+                android:layout_marginTop="15dp"
+                android:layout_marginBottom="10dp"
+                android:paddingTop="10dp"
+                android:paddingLeft="5dp"
+                android:paddingRight="5dp"
+                android:paddingBottom="10dp"
+                android:background="@drawable/et_bule_bg"
+                android:hint="说点什么吧..." />
+<LinearLayout
+        android:gravity="center"
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <ImageView
+                android:layout_width="80dp"
+                android:layout_height="80dp"
+                android:id="@+id/publish_record_play"
+                android:src="@drawable/play_icon"
+                android:layout_marginTop="20dp"
+                />
+        <ImageView
+                android:id="@+id/publish_record_cancel"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:src="@drawable/cancle_icon"
+                />
+</LinearLayout>
+
+<LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_gravity="bottom">
+    <Button
+            android:layout_gravity="bottom"
+            android:id="@+id/publish_record_voice"
+            android:text="按住说话"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content" />
+</LinearLayout>
+</LinearLayout>

@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              android:layout_width="match_parent"
+              android:layout_height="match_parent"
+              android:orientation="vertical"
+              android:background="#ebebeb"
+        >
+
+    <RelativeLayout
+            android:id="@+id/lp_01"
+            android:layout_width="match_parent"
+            android:layout_height="45dp"
+            android:background="@drawable/logbuttonback"
+            android:gravity="center_vertical"
+            android:layout_marginBottom="5dp"
+            >
+        <ImageView
+                android:id="@+id/forgetback"
+                android:layout_width="wrap_content"
+                android:layout_height="35dp"
+                android:src="@drawable/forgetpassback"
+                android:paddingLeft="15dp"
+                android:paddingTop="10dp"
+                android:paddingRight="10dp"/>
+        <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:text="找回账号密码"
+                android:gravity="center_vertical"
+                android:layout_centerHorizontal="true"
+                android:textColor="#ffffff"
+                android:textSize="20sp"
+                />
+    </RelativeLayout>
+
+
+    <LinearLayout android:layout_width="match_parent"
+                  android:layout_height="wrap_content"
+                  android:orientation="vertical"
+            >
+        <LinearLayout android:layout_width="match_parent"
+                      android:layout_height="wrap_content"
+                      android:orientation="vertical"
+                      android:padding="10dp"
+                      android:id="@+id/linearqianming">
+            <TextView android:layout_width="wrap_content"
+                      android:layout_height="wrap_content"
+                      android:text="忘记了账号？"
+                      android:layout_marginLeft="10dp"
+                      android:textSize="16sp"
+                      android:textColor="#333333"
+                     />
+            <TextView android:layout_width="match_parent"
+                      android:layout_height="wrap_content"
+                      android:textColor="#999999"
+                      android:textSize="14sp"
+                      android:text="如果是幼儿园代你开通的账号，通常情况下账号就是你留给幼儿园的手机号。"
+                      android:layout_marginLeft="10dp"
+                      android:layout_marginTop="10dp"
+                      android:id="@+id/setqianming"/>
+        </LinearLayout>
+        <View android:layout_width="match_parent"
+              android:layout_height="0.1dp"
+              android:background="@drawable/forgetpassline"/>
+        <LinearLayout android:layout_width="match_parent"
+                      android:layout_height="wrap_content"
+                      android:orientation="vertical"
+                      android:padding="10dp"
+                      android:id="@+id/linearsex">
+            <TextView android:layout_width="wrap_content"
+                      android:layout_height="wrap_content"
+                      android:text="忘记了密码？"
+                      android:textColor="#333333"
+                      android:layout_marginLeft="10dp"
+                      android:textSize="16sp"
+                      />
+            <Button android:layout_width="wrap_content"
+                       android:background="@drawable/forgetpassbutton"
+                       android:text="使用手机号重置密码"
+                       android:textColor="#FFFFFF"
+                       android:textSize="20dp"
+                       android:layout_marginTop="15dp"
+                       android:id="@+id/mobilebutton"
+                       android:layout_height="wrap_content"/>
+            <TextView android:layout_width="match_parent"
+                      android:layout_height="wrap_content"
+                      android:textColor="#999999"
+                      android:textSize="14sp"
+                      android:text="如果你使用手机号登陆e贝e宝或者你的e贝e宝账号绑定了手机，你可以使用手机号找回你的密码。"
+                      android:layout_marginLeft="10dp"
+                      android:layout_marginTop="10dp"
+                      />
+            <Button android:layout_width="wrap_content"
+                    android:background="@drawable/forgetpassbutton"
+                    android:text="使用邮箱重置密码"
+                    android:textSize="20dp"
+                    android:textColor="#FFFFFF"
+                    android:layout_marginTop="15dp"
+                    android:id="@+id/emailbutton"
+                    android:layout_height="wrap_content"/>
+            <TextView android:layout_width="match_parent"
+                      android:layout_height="wrap_content"
+                      android:textColor="#999999"
+                      android:textSize="14sp"
+                      android:text="如果你的e贝e宝账号已经绑定了邮箱，你可以使用已验证的邮箱重置你的密码。"
+                      android:layout_marginLeft="10dp"
+                      android:layout_marginTop="15dp"
+                    />
+        </LinearLayout>
+    </LinearLayout>
+
+</LinearLayout>

@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              android:orientation="vertical"
+              android:layout_width="match_parent"
+              android:layout_height="match_parent">
+    <RelativeLayout
+            android:id="@+id/lp_01"
+            android:layout_width="match_parent"
+            android:layout_height="45dp"
+            android:background="@drawable/top_background"
+            android:gravity="center_vertical"
+            android:layout_marginBottom="5dp"
+            >
+        <ImageView
+                android:id="@+id/send_group_message_back"
+                android:layout_width="wrap_content"
+                android:layout_height="35dp"
+                android:src="@drawable/top_back"
+                android:paddingLeft="15dp"
+                android:paddingTop="10dp"
+                android:paddingRight="10dp"/>
+        <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:text="群发信息"
+                android:gravity="center_vertical"
+                android:layout_centerHorizontal="true"
+                android:textColor="#ffffff"
+                android:textSize="18sp"
+                />
+        <TextView
+                android:id="@+id/send_group_message_send"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="18sp"
+                android:textColor="#ffffff"
+                android:layout_marginRight="10dp"
+                android:text="发布"
+                android:layout_centerVertical="true"
+                android:layout_alignParentRight="true"/>
+    </RelativeLayout>
+    <RadioGroup
+            android:orientation="horizontal"
+            android:id="@+id/send_group_message_radio"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+    </RadioGroup>
+
+    <EditText
+            android:id="@+id/send_group_message_content"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"/>
+
+</LinearLayout>

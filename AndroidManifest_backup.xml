@@ -1,0 +1,257 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+          package="com.xiaogang.ChildOne"
+          android:versionCode="1"
+          android:versionName="1.0">
+    <uses-sdk android:minSdkVersion="16"/>
+    <uses-permission android:name="android.permission.INTERNET"/>
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"/>
+    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE"/>
+    <uses-permission android:name="android.permission.READ_PHONE_STATE"/>
+    <uses-permission android:name="android.permission.CAMERA"/>
+    <uses-permission android:name="android.permission.ACCESS_DOWNLOAD_MANAGER"/>
+    <uses-permission android:name="android.permission.CHANGE_NETWORK_STATE"/>
+    <uses-permission android:name="android.permission.DOWNLOAD_WITHOUT_NOTIFICATION"/>
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION"/>
+    <uses-permission android:name="android.permission.CHANGE_WIFI_STATE"/>
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION"/>
+    <uses-permission android:name="android.permission.MOUNT_UNMOUNT_FILESYSTEMS"/>
+    <uses-permission android:name="android.permission.READ_LOGS"/>
+    <uses-permission android:name="android.permission.RECORD_AUDIO"/>
+    <uses-permission android:name="android.permission.WAKE_LOCK" />
+    <uses-permission android:name="android.permission.WRITE_SETTINGS"/>
+
+    <uses-permission android:name="android.permission.VIBRATE" />
+    <permission android:name="android.permission.BAIDU_LOCATION_SERVICE" >
+    </permission>
+
+    <uses-permission android:name="android.permission.BAIDU_LOCATION_SERVICE" >
+    </uses-permission>
+
+    <uses-permission android:name="android.permission.ACCESS_MOCK_LOCATION" >
+    </uses-permission>
+    <!-- <uses-permission android:name="android.permission.WRITE_APN_SETTINGS"></uses-permission> -->
+    <uses-permission android:name="com.android.launcher.permission.READ_SETTINGS" />
+    <uses-permission android:name="android.permission.ACCESS_GPS" />
+    <uses-permission android:name="android.permission.READ_CONTACTS" />
+    <uses-permission android:name="android.permission.CALL_PHONE" />
+    <uses-permission android:name="android.permission.READ_SMS" />
+    <uses-permission android:name="android.permission.SEND_SMS" />
+
+    <application android:icon="@drawable/ic_launcher"
+                 android:label="@string/app_name"
+                 android:name=".HomeBabyApplication"
+                 android:theme="@android:style/Theme.NoTitleBar">
+
+        <activity android:name="com.xiaogang.ChildOne.ui.LoadingActivity"
+                  android:screenOrientation="portrait">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN"/>
+                <category android:name="android.intent.category.LAUNCHER"/>
+            </intent-filter>
+        </activity>
+        <activity android:name="com.xiaogang.ChildOne.ui.LoginActivity" android:screenOrientation="portrait"/>
+        <activity android:name="com.xiaogang.ChildOne.ui.MainActivity" android:screenOrientation="portrait"/>
+        <activity android:name=".ui.JiarenActivity" android:screenOrientation="portrait"/>
+        <activity android:name="com.xiaogang.ChildOne.ui.ForgetPassOneActivity"
+                  android:screenOrientation="portrait"/>
+        <activity android:name="com.xiaogang.ChildOne.ui.SettingActivity"
+                  android:screenOrientation="portrait"/>
+        <activity android:name="com.xiaogang.ChildOne.ui.NotificationActivity"
+                  android:screenOrientation="portrait"/>
+        <activity android:name="com.xiaogang.ChildOne.ui.PhotosActivity"
+                  android:screenOrientation="portrait"/>
+        <activity android:name="com.xiaogang.ChildOne.ui.BabySettingActivity"
+                  android:screenOrientation="portrait"/>
+        <activity android:name="com.xiaogang.ChildOne.ui.MumSettingActivity"
+                  android:screenOrientation="portrait"/>
+
+        <activity android:name="com.xiaogang.ChildOne.ui.YuyingMessageActivity"
+                  android:screenOrientation="portrait"/>
+        <activity android:name="com.xiaogang.ChildOne.ui.SchoolBusActivity"
+                  android:screenOrientation="portrait"/>
+        <activity android:name="com.xiaogang.ChildOne.ui.JiaohuActivity"
+                  android:screenOrientation="portrait"/>
+        <activity android:name="com.xiaogang.ChildOne.ui.DianmingActivity"
+                  android:screenOrientation="portrait"/>
+        <activity android:name="com.xiaogang.ChildOne.ui.PictureActivity"
+                  android:screenOrientation="portrait"/>
+        <activity android:name="com.xiaogang.ChildOne.ui.YuYiingDetailActivity"
+                  android:screenOrientation="portrait"/>
+        <activity android:name="com.xiaogang.ChildOne.ui.SettingAboutActivity"
+                  android:screenOrientation="portrait"/>
+        <activity android:name="com.xiaogang.ChildOne.ui.SettingPassword"
+                  android:screenOrientation="portrait"/>
+        <activity android:name="com.xiaogang.ChildOne.ui.SettingEmailActivity"
+                  android:screenOrientation="portrait"/>
+        <activity android:name="com.xiaogang.ChildOne.ui.SettingMobileActivity"
+                  android:screenOrientation="portrait"/>
+        <activity android:name="com.xiaogang.ChildOne.ui.SelectIdentityActivity"
+                  android:screenOrientation="portrait"/>
+        <activity android:name="com.xiaogang.ChildOne.ui.ForgetPassTwoActivity"
+                  android:screenOrientation="portrait"/>
+        <activity android:name="com.xiaogang.ChildOne.ui.ForgetPassThreeActivity"
+                  android:screenOrientation="portrait"/>
+        <activity android:name="com.xiaogang.ChildOne.ui.ForgetPassFourActivity"
+                  android:screenOrientation="portrait"/>
+        <activity android:name="com.xiaogang.ChildOne.ui.TongxunluActivity"
+                  android:screenOrientation="portrait"/>
+        <activity android:name="com.xiaogang.ChildOne.ui.CommentActivity"
+                  android:screenOrientation="portrait"/>
+        <activity android:name="com.xiaogang.ChildOne.ui.SettingEmaillTwoActivity"
+                  android:screenOrientation="portrait"/>
+        <activity android:name="com.xiaogang.ChildOne.ui.ChatActivity"
+                  android:screenOrientation="portrait"/>
+
+
+        <activity android:name="com.xiaogang.ChildOne.ui.PublishImageActivity"
+                  android:screenOrientation="portrait"/>
+        <activity android:name="com.xiaogang.ChildOne.ui.PublishPhotoActivity"
+                  android:screenOrientation="portrait"/>
+        <activity android:name="com.xiaogang.ChildOne.ui.PublishRecordActivity"
+                  android:screenOrientation="portrait">
+
+        </activity>
+        <activity android:name="com.xiaogang.ChildOne.ui.PublishVideoActivity"
+                  android:screenOrientation="portrait"/>
+        <activity android:name="com.xiaogang.ChildOne.ui.PublishPictureActivity"
+                  android:screenOrientation="portrait"/>
+
+        <activity android:name="com.xiaogang.ChildOne.ui.AlbumActivity"
+                  android:screenOrientation="portrait"/>
+        <activity android:name="com.xiaogang.ChildOne.ui.AlbumChanceActivity"
+                  android:screenOrientation="portrait"/>
+        <activity android:name="com.xiaogang.ChildOne.ui.ImageDelActivity"
+                  android:screenOrientation="portrait"/>
+        <activity android:name="com.xiaogang.ChildOne.recorder.FFmpegRecorderActivity"
+                  android:screenOrientation="portrait"/>
+        <activity android:name="com.xiaogang.ChildOne.ui.SettingMobileActivityTwo"
+                  android:screenOrientation="portrait"/>
+        <activity android:name="com.xiaogang.ChildOne.recorder.FFmpegPreviewActivity"
+                  android:screenOrientation="portrait"/>
+        <activity
+                android:name="com.xiaogang.ChildOne.ui.SchoolBusActivityFather"
+                android:configChanges="orientation|keyboardHidden"
+                android:screenOrientation="portrait"
+                >
+        </activity>
+        <activity android:name="com.xiaogang.ChildOne.ui.VideoViewActivity"
+                  android:configChanges="orientation|keyboardHidden"
+                  android:screenOrientation="portrait"/>
+        <activity android:name="com.xiaogang.ChildOne.ui.OpenglDemo"
+                  android:configChanges="orientation|keyboardHidden"
+                  android:screenOrientation="portrait"/>
+        <activity
+                android:name="io.vov.vitamio.activity.InitActivity"
+                android:configChanges="orientation|screenSize|smallestScreenSize|keyboard|keyboardHidden|navigation"
+                android:launchMode="singleTop"
+                android:theme="@android:style/Theme.NoTitleBar"
+                android:windowSoftInputMode="stateAlwaysHidden" />
+        <activity android:name="com.xiaogang.ChildOne.ui.TeacherSettingActivity"
+                  android:configChanges="orientation|keyboardHidden"
+                  android:screenOrientation="portrait"
+                />
+        <activity android:name="com.xiaogang.ChildOne.ui.GalleryUrlActivity"
+                  android:screenOrientation="portrait"/>
+        <activity android:name="com.xiaogang.ChildOne.ui.SendGroupMessageActivity"
+                  android:screenOrientation="portrait"/>
+        <activity android:name="com.xiaogang.ChildOne.ui.CenterActivity"
+                  android:screenOrientation="portrait">
+        </activity>
+        <activity android:name=".ui.AddJiarenActivity"  android:screenOrientation="portrait"/>
+        <activity android:name=".ui.NoticeActivity"  android:screenOrientation="portrait"/>
+        <activity android:name=".ui.NoticeDetailActivity"  android:screenOrientation="portrait"/>
+        <activity android:name=".ui.AboutActivity"  android:screenOrientation="portrait"/>
+
+        <!--友盟测试-->
+        <meta-data
+                android:name="UMENG_APPKEY"
+                android:value="54a2a59bfd98c5278e000076" >
+        </meta-data>
+        <meta-data
+                android:name="UMENG_CHANNEL"
+                android:value="ebaebo" >
+        </meta-data>
+        <meta-data android:name="UMENG_MESSAGE_SECRET" android:value="64eef779483348c5eff4d2e3bba233ec"/>
+
+        <!-- 友盟自动更新 -->
+        <service android:name="com.umeng.update.net.DownloadingService" android:process=":DownloadingService">
+        </service>
+        <activity android:name="com.umeng.update.UpdateDialogActivity" android:theme="@android:style/Theme.Translucent.NoTitleBar">
+        </activity>
+        <activity android:configChanges="orientation|keyboard" android:launchMode="singleTask" android:name="com.umeng.socialize.view.ShareActivity" android:noHistory="true" android:theme="@style/Theme.UMDialog" android:windowSoftInputMode="stateVisible|adjustResize"/>
+        <activity android:configChanges="keyboardHidden|orientation|screenSize" android:exported="true" android:name="com.xiaogang.ChildOne.wxapi.WXEntryActivity" android:screenOrientation="portrait" android:theme="@android:style/Theme.Translucent.NoTitleBar"/>
+
+        <receiver android:exported="false" android:name="com.umeng.message.NotificationProxyBroadcastReceiver">
+        </receiver>
+        <receiver android:name="com.umeng.message.RegistrationReceiver">
+            <intent-filter>
+                <action android:name="android.net.conn.CONNECTIVITY_CHANGE"/>
+            </intent-filter>
+            <intent-filter>
+                <action android:name="android.intent.action.PACKAGE_REMOVED"/>
+
+                <data android:scheme="package"/>
+            </intent-filter>
+        </receiver>
+        <receiver android:name="com.umeng.message.UmengBroadcastReceiver">
+            <intent-filter>
+                <action android:name="org.agoo.android.intent.action.RECEIVE"/>
+            </intent-filter>
+            <intent-filter>
+                <action android:name="com.liangxun.lxApp.intent.action.COMMAND"/>
+            </intent-filter>
+            <intent-filter>
+                <action android:name="org.agoo.android.intent.action.RE_ELECTION_V2"/>
+            </intent-filter>
+        </receiver>
+        <service android:exported="true" android:name="com.umeng.message.UmengService" android:process=":umengService_v1">
+            <intent-filter>
+                <action android:name="com.liangxun.lxApp.intent.action.START"/>
+            </intent-filter>
+            <intent-filter>
+                <action android:name="com.liangxun.lxApp.intent.action.COCKROACH"/>
+            </intent-filter>
+            <intent-filter>
+                <action android:name="org.agoo.android.intent.action.PING"/>
+            </intent-filter>
+        </service>
+        <service android:exported="true" android:name="org.android.agoo.service.ElectionService" android:process=":umengService_v1">
+            <intent-filter>
+                <action android:name="org.agoo.android.intent.action.ELECTION_V2"/>
+            </intent-filter>
+        </service>
+        <service android:name="com.umeng.message.UmengIntentService"/>
+        <!-- V1.3.0添加的service，负责下载通知的资源 -->
+        <service android:name="com.umeng.message.UmengDownloadResourceService"/>
+        <activity android:configChanges="orientation|keyboard" android:launchMode="singleTask" android:name="com.tencent.tauth.AuthActivity" android:noHistory="true">
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW"/>
+                <category android:name="android.intent.category.DEFAULT"/>
+                <category android:name="android.intent.category.BROWSABLE"/>
+                <data android:scheme="tencent添加你的App Id"/>
+            </intent-filter>
+        </activity>
+
+
+        <service
+                android:name="com.baidu.location.f"
+                android:enabled="true"
+                android:process=":remote" >
+            <intent-filter>
+                <action android:name="com.baidu.location.service_v2.2" >
+                </action>
+            </intent-filter>
+        </service>
+        <service android:name="com.xiaogang.ChildOne.service.MessageService"/>
+
+        <!-- meta-data需要写在application中 -->
+        <meta-data
+                android:name="com.baidu.lbsapi.API_KEY"
+                android:value="YqoSZQ5TgGmW98VvVXtLNPwD" />
+        <activity android:name="com.tencent.connect.common.AssistActivity"
+                  android:screenOrientation="portrait"
+                  android:theme="@android:style/Theme.Translucent.NoTitleBar"/>
+    </application>
+</manifest>

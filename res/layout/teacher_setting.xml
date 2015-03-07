@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              android:layout_width="match_parent"
+              android:layout_height="match_parent"
+              android:orientation="vertical"
+              android:background="#f7f7f7"
+        >
+
+    <!-- head开始 -->
+    <RelativeLayout
+            android:id="@+id/lp_01"
+            android:layout_width="match_parent"
+            android:layout_height="45dp"
+            android:background="@drawable/top_background"
+            android:gravity="center_vertical"
+            android:layout_marginBottom="5dp"
+            >
+        <ImageView
+                android:id="@+id/back"
+                android:layout_width="wrap_content"
+                android:layout_height="35dp"
+                android:src="@drawable/top_back"
+                android:paddingLeft="15dp"
+                android:paddingTop="10dp"
+                android:paddingRight="10dp"/>
+        <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:text="老师设置"
+                android:gravity="center_vertical"
+                android:layout_centerHorizontal="true"
+                android:textColor="#ffffff"
+                android:textSize="18sp"
+                android:id="@+id/mum_setting_title"
+                />
+    </RelativeLayout>
+    <!-- head结束 -->
+    <!-- 主体 -->
+
+    <LinearLayout android:layout_width="match_parent"
+                  android:layout_height="wrap_content"
+                  android:orientation="vertical"
+                  android:padding="10dp"
+                  android:id="@+id/linearname">
+        <RelativeLayout android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:gravity="center_vertical"
+                        android:padding="10dp"
+                        android:background="@drawable/zhuye_item_select"
+                >
+            <ImageView android:layout_width="80dp"
+                       android:layout_height="80dp"
+                       android:layout_centerHorizontal="true"
+                       android:src="@drawable/txhc"
+                       android:adjustViewBounds="true"
+                       android:id="@+id/mum_setting_tx"/>
+        </RelativeLayout>
+        <EditText android:layout_width="match_parent"
+                  android:layout_height="50dp"
+                  android:textColor="#333333"
+                  android:textSize="20sp"
+                  android:hint="姓名"
+                  android:id="@+id/mum_setting_name"/>
+        <!--<EditText android:layout_width="match_parent"-->
+                  <!--android:layout_height="50dp"-->
+                  <!--android:textColor="#333333"-->
+                  <!--android:textSize="20sp"-->
+                  <!--android:hint="绑定手机"-->
+                  <!--android:id="@+id/mobile"/>-->
+        <!--<EditText android:layout_width="match_parent"-->
+                  <!--android:layout_height="50dp"-->
+                  <!--android:textColor="#333333"-->
+                  <!--android:textSize="20sp"-->
+                  <!--android:hint="密码"-->
+                  <!--android:password="true"-->
+                  <!--android:id="@+id/password"/>-->
+        <TextView android:layout_width="wrap_content"
+                  android:text="确  定"
+                  android:id="@+id/mum_setting_sure"
+                  android:textSize="20dp"
+                  android:textStyle="bold"
+                  android:textColor="#FFFFFF"
+                  android:layout_marginTop="10dp"
+                  android:gravity="center"
+                  android:layout_gravity="center"
+                  android:background="@drawable/top_background"
+                  android:layout_height="50dp"/>
+
+    </LinearLayout>
+
+
+    <!-- 主体结束 -->
+
+</LinearLayout>

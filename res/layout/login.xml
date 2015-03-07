@@ -1,0 +1,134 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              android:layout_width="match_parent"
+              android:orientation="vertical"
+              android:background="@drawable/baiban"
+              android:layout_height="fill_parent" >
+    <LinearLayout android:layout_width="match_parent"
+                  android:orientation="vertical"
+                  android:layout_weight="1"
+                  android:layout_marginTop="20dp"
+                  android:layout_height="match_parent">
+
+        <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center">
+            <TextView android:layout_width="match_parent"
+                      android:textSize="18sp"
+                      android:layout_gravity="center"
+                      android:gravity="center"
+                      android:textColor="@color/green"
+                      android:text="现在登入来关心你的宝宝"
+                      android:layout_height="wrap_content"/>
+        </LinearLayout>
+
+    <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:layout_marginTop="15dp"
+            android:orientation="vertical"
+            android:padding="10dp">
+        <TextView android:layout_width="match_parent"
+                  android:text="账号"
+                  android:textSize="18sp"
+                  android:layout_marginLeft="30dp"
+                  android:textColor="@color/bq_bg"
+                  android:layout_height="wrap_content"/>
+        <LinearLayout android:layout_width="wrap_content"
+                      android:orientation="horizontal"
+                      android:layout_marginTop="5dp"
+                      android:gravity="center|left"
+                      android:background="@drawable/login_kuang"
+                      android:layout_height="wrap_content">
+            <ImageView android:layout_width="wrap_content"
+                       android:layout_marginLeft="20dp"
+                       android:src="@drawable/login_people"
+                       android:layout_height="wrap_content"/>
+            <EditText
+                    android:layout_width="wrap_content"
+                    android:background="@null"
+                    android:layout_weight="1"
+                    android:layout_height="match_parent"
+                    android:id="@+id/login_username"
+                    android:layout_marginLeft="10dp"
+                    android:hint="请输入账号"/>
+        </LinearLayout>
+
+        <TextView android:layout_width="match_parent"
+                  android:text="密码"
+                  android:layout_marginTop="5dp"
+                  android:textSize="18sp"
+                  android:layout_marginLeft="30dp"
+                  android:textColor="@color/bq_bg"
+                  android:layout_height="wrap_content"/>
+        <LinearLayout android:layout_width="wrap_content"
+                      android:orientation="horizontal"
+                      android:layout_marginTop="5dp"
+                      android:gravity="center|left"
+                      android:background="@drawable/login_kuang"
+                      android:layout_height="wrap_content">
+            <ImageView android:layout_width="wrap_content"
+                       android:layout_marginLeft="20dp"
+                       android:src="@drawable/login_pwr"
+                       android:layout_height="wrap_content"/>
+            <EditText
+                    android:layout_width="wrap_content"
+                    android:layout_weight="1"
+                    android:layout_height="match_parent"
+                    android:id="@+id/login_password"
+                    android:layout_marginLeft="10dp"
+                    android:background="@null"
+                    android:hint="请输入密码"/>
+        </LinearLayout>
+
+    </LinearLayout>
+
+    <LinearLayout android:layout_width="wrap_content"
+                  android:layout_height="wrap_content"
+                  android:orientation="vertical"
+                  android:layout_marginTop="30dp"
+                  android:layout_gravity="center"
+                  android:gravity="center"
+                  android:background="@drawable/login_back"
+                 >
+        <TextView
+                android:id="@+id/login_btn"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:text="登  入"
+                android:textSize="20dp"
+                android:textStyle="bold"
+                android:textColor="#ffffff"
+                android:layout_gravity="center"
+                android:gravity="center"/>
+    </LinearLayout>
+
+    <LinearLayout
+            android:layout_marginTop="10dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="20dp"
+            android:layout_gravity="right">
+        <TextView
+                android:id="@+id/login_forgetpass"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="忘记密码"
+                android:textStyle="bold"
+                android:textSize="18dp"
+                android:textColor="@color/green"/>
+    </LinearLayout>
+    </LinearLayout>
+
+    <LinearLayout android:layout_width="match_parent"
+                  android:orientation="vertical"
+                  android:gravity="bottom"
+                  android:layout_height="wrap_content">
+        <ImageView android:layout_width="match_parent"
+                   android:src="@drawable/login_bottom"
+                   android:layout_height="wrap_content"/>
+    </LinearLayout>
+</LinearLayout>

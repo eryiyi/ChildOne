@@ -1,0 +1,236 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              android:layout_width="match_parent"
+              android:layout_height="match_parent"
+              android:orientation="vertical"
+
+        >
+
+    <RelativeLayout
+            android:id="@+id/zxit"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/zhuye_item_select" >
+        <LinearLayout
+                android:id="@+id/zxitb"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:descendantFocusability="blocksDescendants"
+                >
+
+            <LinearLayout
+                    android:id="@+id/zxitb2"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_toRightOf="@+id/zxitb1"
+                    android:orientation="vertical"
+                    >
+                <LinearLayout android:layout_width="match_parent"
+                              android:layout_height="wrap_content"
+                              android:paddingLeft="10dp"
+                              android:paddingRight="10dp"
+                              android:paddingTop="10dp"
+                              android:orientation="horizontal">
+                    <FrameLayout
+                            android:layout_width="50dp"
+                            android:layout_height="50dp" >
+                        <ImageView
+                                android:id="@+id/growing_item_photo"
+                                android:layout_width="50dp"
+                                android:layout_height="50dp"
+                                android:src="@drawable/txhc"
+                                android:adjustViewBounds="true"
+                                android:scaleType="centerCrop"/>
+
+
+                        <ImageView
+                                android:background="#0000"
+                                android:src="@drawable/round_corner"
+                                android:scaleType="centerCrop"
+                                android:layout_width="50dp"
+                                android:layout_height="50dp"
+                                />
+                    </FrameLayout>
+
+                    <TextView
+                            android:layout_marginLeft="10dp"
+                            android:id="@+id/growing_item_name"
+                            android:layout_width="wrap_content"
+                            android:layout_height="match_parent"
+                            android:text="昵称"
+                            android:textSize="20sp"
+                            android:textColor="@color/green"
+                            android:singleLine="true"
+                            android:gravity="center_vertical"
+                            />
+                        <TextView
+                                android:id="@+id/growing_item_time"
+                                android:layout_width="wrap_content"
+                                android:layout_height="match_parent"
+                                android:layout_marginLeft="10dp"
+                                android:text="2014.01.02"
+                                android:textSize="11sp"
+                                android:gravity="center_vertical"
+                                android:textColor="#e5b15e"
+                                />
+                </LinearLayout>
+
+                <LinearLayout
+                        android:id="@+id/zxitb6"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical"
+                        android:padding="5dp"
+                        >
+                    <!-- 内容 -->
+                    <TextView
+                            android:layout_marginLeft="10dp"
+                            android:id="@+id/growing_item_content"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:textSize="18sp"
+                            android:autoLink="web"
+                            android:lineSpacingExtra="5dp"
+                            android:text="内容"
+                            android:textColor="@color/light_gray" />
+
+                    <!-- 内部图片 -->
+                    <GridView
+                            android:layout_gravity="center"
+                            android:id="@+id/growing_item_gridview"
+                            android:gravity="center"
+                            android:numColumns="auto_fit"
+                            android:verticalSpacing="5dp"
+                            android:horizontalSpacing="5dp"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content">
+
+                    </GridView>
+                    <ImageView
+                            android:id="@+id/growing_item_play_record"
+                            android:layout_width="60dp"
+                            android:layout_height="60dp"/>
+                    <Button
+                            android:id="@+id/growing_item_play_video"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="播放视频"/>
+                </LinearLayout>
+                <LinearLayout
+                        android:id="@+id/growing_item_favours_detail"
+                        android:orientation="horizontal"
+                        android:layout_width="match_parent" 
+                        android:layout_height="wrap_content">
+                    <ImageView
+                            android:layout_marginLeft="10dp"
+                            android:src="@drawable/red_favours"
+                            android:layout_width="20dp"
+                            android:layout_height="30dp"/>
+                    <TextView
+                            android:id="@+id/growing_item_favours_num"
+                            android:layout_marginLeft="5dp"
+                            android:layout_gravity="center"
+                            android:textSize="18sp"
+                            android:text="5"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"/>
+                    <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"/>
+                </LinearLayout>
+                <LinearLayout
+                        android:id="@+id/growing_item_comment_list"
+                        android:orientation="vertical"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content">
+
+                </LinearLayout>
+            </LinearLayout>
+        </LinearLayout>
+
+        <!-- 操作 -->
+        <ImageView
+                android:id="@+id/zxita1"
+                android:layout_width="match_parent"
+                android:layout_height="0.5dp"
+                android:layout_below="@id/zxitb"
+                android:layout_marginTop="5dp"
+                android:background="#e9e9e9"
+                />
+        <LinearLayout
+                android:id="@+id/zxita"
+                android:layout_width="match_parent"
+                android:layout_height="35dp"
+                android:layout_below="@id/zxita1"
+                android:orientation="horizontal"
+                >
+
+            <LinearLayout
+                    android:id="@+id/growing_item_favours"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:gravity="center"
+                    android:layout_weight="1"
+                    android:background="@drawable/footbackground"
+                    >
+                <ImageView
+                        android:id="@+id/red_heart"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginRight="3dp"
+                        android:src="@drawable/favours"
+                        />
+            </LinearLayout>
+            <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+
+                    />
+            <LinearLayout
+                    android:id="@+id/growing_item_comment"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:gravity="center"
+                    android:layout_weight="1"
+                    android:background="@drawable/footbackground"
+                    >
+
+                <ImageView
+                        android:id="@+id/pinglun_image"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginRight="3dp"
+                        android:src="@drawable/comment"
+                        />
+            </LinearLayout>
+            <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+
+                    />
+            <LinearLayout
+                    android:id="@+id/zxita13"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:gravity="center"
+                    android:layout_weight="1"
+                    android:background="@drawable/footbackground"
+                    >
+
+                <ImageView
+                        android:id="@+id/growing_item_share"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:src="@drawable/share"
+                        android:layout_marginRight="3dp"
+                        />
+            </LinearLayout>
+        </LinearLayout>
+
+    </RelativeLayout>
+
+    <ImageView
+            android:src="@drawable/line"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"/>
+
+
+</LinearLayout>
