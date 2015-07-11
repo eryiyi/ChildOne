@@ -106,14 +106,7 @@ public class MainActivity extends BaseActivity implements
         getData(ContentListView.REFRESH);
         getBaby();
 
-        //初始化加载表情
-        new Thread(new Runnable() {
-            @Override
-            public void run() {
-                FaceConversionUtil.getInstace().getFileText(getApplication());
-            }
-        }).start();
-
+        
         // 设置分享内容
         mController.setShareContent("");
         // 设置分享图片, 参数2为图片的url地址
@@ -460,7 +453,7 @@ public class MainActivity extends BaseActivity implements
                                         child_id = "";
                                     } else{
                                         Baby baby = babies.get(position-1);
-                                        child_id = baby.getId();
+                                        child_id = baby.getChild_id();
                                     }
                                     getData(ContentListView.REFRESH);
 

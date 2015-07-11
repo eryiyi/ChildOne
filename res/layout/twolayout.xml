@@ -118,11 +118,11 @@
                          android:layout_marginLeft="10dp"
                          android:background="@drawable/selected"
                          android:layout_height="wrap_content"/>
-            <!--<ImageButton android:layout_width="wrap_content"-->
-                         <!--android:background="@drawable/unselected"-->
-                         <!--android:layout_gravity="center"-->
-                         <!--android:layout_marginLeft="10dp"-->
-                         <!--android:layout_height="wrap_content"/>-->
+            <ImageButton android:layout_width="wrap_content"
+                         android:background="@drawable/unselected"
+                         android:layout_gravity="center"
+                         android:layout_marginLeft="10dp"
+                         android:layout_height="wrap_content"/>
         </LinearLayout>
     </LinearLayout>
 

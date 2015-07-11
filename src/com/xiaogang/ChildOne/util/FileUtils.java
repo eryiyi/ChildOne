@@ -29,4 +29,21 @@ public class FileUtils {
 			return pathFile.getAbsolutePath();
 		}
 	}
+	
+	public static File createFile(){
+		File file = null;
+		String state = Environment.getExternalStorageState(); 
+		if (state.equals(Environment.MEDIA_MOUNTED)) { 
+		    String saveDir = Environment.getExternalStorageDirectory() 
+		            + "/ebaebo/photoCache"; 
+		    file = new File(saveDir); 
+		    if (!file.exists()) { 
+		        file.mkdir(); 
+		    } 
+		}else{
+			 String saveDir ="/storage/emmc/ebaebo/photoCache";
+			 file = new File(saveDir); 
+		}
+		return file;
+	}
 }

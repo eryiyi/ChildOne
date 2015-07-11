@@ -14,6 +14,7 @@ import com.android.volley.*;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
 import com.google.gson.Gson;
+import com.xiaogang.ChildOne.HomeBabyApplication;
 import com.xiaogang.ChildOne.R;
 import com.xiaogang.ChildOne.data.AccountDATA;
 import com.xiaogang.ChildOne.data.ErrorDATA;
@@ -114,6 +115,7 @@ public class LoginActivity extends BaseActivity implements View.OnClickListener{
                                     AccountDATA data = gson.fromJson(s, AccountDATA.class);
                                     Account account = data.getData();
                                     saveAccount(name, pass, account);
+                                    HomeBabyApplication.is_student = account.getIs_student();
                                     if ("1".equals(account.getIs_student())){//如果是家长登陆，选择身份
                                         Intent setIdentity = new Intent(LoginActivity.this, SelectIdentityActivity.class);
                                         setIdentity.putExtra(Constants.ACCOUNT_KEY, account);

@@ -19,6 +19,7 @@ public class Photos implements Serializable {
     private String cover;//封面
     private String school_id;//学校ID
     private String dateline;//时间戳
+    
 
     private List<Pictures> list;//相册中的图片
 

@@ -16,6 +16,8 @@ import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 
 import com.google.gson.Gson;
+import com.google.gson.reflect.TypeToken;
+import com.xiaogang.ChildOne.HomeBabyApplication;
 import com.xiaogang.ChildOne.R;
 import com.xiaogang.ChildOne.data.BabyDATA;
 import com.xiaogang.ChildOne.data.ErrorDATA;
@@ -33,6 +35,9 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+
+import org.json.JSONArray;
+import org.json.JSONObject;
 
 /**
  * Created by liuzwei on 2014/11/24.
@@ -237,7 +242,12 @@ public class PublishVideoActivity extends BaseActivity implements View.OnClickLi
     }
 
     private void getBabyList(){
-        String uri = String.format(InternetURL.GET_BABY_URL + "?uid=%s", account.getUid());
+    	String uri ="";
+    	if(HomeBabyApplication.is_student.equals("1")){
+    		uri = String.format(InternetURL.GET_BABY_URL + "?uid=%s", account.getUid());
+    	}else if(HomeBabyApplication.is_student.equals("0")){
+    		uri = String.format(InternetURL.TEACHEAR_GET_BABY_URL+"?uid=%s&class_id=%s", account.getUid(),account.getClass_id());
+    	}
         StringRequest request = new StringRequest(
                 Request.Method.GET,
                 uri,
@@ -245,21 +255,35 @@ public class PublishVideoActivity extends BaseActivity implements View.OnClickLi
                     @Override
                     public void onResponse(String s) {
                         Gson gson = new Gson();
+                        List<String> names = null;
                         try{
-                            BabyDATA data = gson.fromJson(s, BabyDATA.class);
-                            babies.addAll(data.getData());
-                            List<String> names = new ArrayList<String>();
-                            for (int i=0; i<babies.size(); i++){
-                                names.add(babies.get(i).getName());
-                            }
-                            spinnerAdapter = new ArrayAdapter<String>(mContext, android.R.layout.simple_spinner_item, names);
+                        	if(HomeBabyApplication.is_student.equals("1")){
+                       		 BabyDATA data = gson.fromJson(s, BabyDATA.class);
+                                babies.addAll(data.getData());
+                                names = new ArrayList<String>();
+                                for (int i=0; i<babies.size(); i++){
+                                    names.add(babies.get(i).getName());
+                                }
+                       	}else{
+                       		JSONObject jsonObject = new JSONObject(s);
+                           	String result_code = jsonObject.getString("code");
+                           	if(result_code.equals("200")){
+                           		JSONArray jsonDatas = jsonObject.getJSONObject("data").getJSONArray("child");
+                               	babies = gson.fromJson(jsonDatas.toString(), new TypeToken<List<Baby>>(){}.getType());
+                               	names = new ArrayList<String>();
+                                    for (int i=0; i<babies.size(); i++){
+                                        names.add(babies.get(i).getName());
+                                    }
+                           	}
+                       	}
+                            spinnerAdapter = new ArrayAdapter<String>(PublishVideoActivity.this, android.R.layout.simple_spinner_item, names);
                             spinnerAdapter.setDropDownViewResource(android.R.layout.select_dialog_singlechoice);
                             spinner.setAdapter(spinnerAdapter);
                             spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
                                 @Override
                                 public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
                                     Baby baby = babies.get(position);
-                                    babyId = baby.getId();
+                                    babyId = baby.getChild_id();
                                 }
 
                                 @Override

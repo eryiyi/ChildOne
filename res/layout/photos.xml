@@ -7,32 +7,42 @@
         >
 
     <!-- head开始 -->
-    <RelativeLayout
+    <FrameLayout
             android:id="@+id/lp_01"
             android:layout_width="match_parent"
             android:layout_height="45dp"
             android:background="@drawable/top_background"
             android:gravity="center_vertical"
-            android:layout_marginBottom="5dp"
-            >
+            android:layout_marginBottom="5dp">
         <ImageView
                 android:id="@+id/photosback"
                 android:layout_width="wrap_content"
-                android:layout_height="35dp"
+                android:layout_height="45dp"
                 android:src="@drawable/top_back"
-                android:paddingLeft="15dp"
-                android:paddingTop="10dp"
-                android:paddingRight="10dp"/>
+                android:paddingLeft="25dp"
+                android:paddingRight="25dp"/>
         <TextView
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:text="班级相册"
-                android:gravity="center_vertical"
-                android:layout_centerHorizontal="true"
+                android:text="活动剪影"
+                android:gravity="center"
                 android:textColor="#ffffff"
-                android:textSize="18sp"
-                />
-    </RelativeLayout>
+                android:textSize="18sp"/>
+        <RelativeLayout 
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+            <TextView
+            	android:id="@+id/create_phono_tv"
+                android:layout_width="60dip"
+                android:layout_height="match_parent"
+                android:text="创建"
+                android:gravity="center"
+                android:textColor="#ffffff"
+                android:layout_alignParentRight="true"
+                android:textSize="18sp"/>
+        </RelativeLayout>
+        
+    </FrameLayout>
     <!-- head结束 -->
     <!-- 主体 -->
     <RelativeLayout
@@ -40,7 +50,7 @@
             android:layout_height="0dp"
             android:layout_weight="1"
             >
-        <com.app.lovebaby.widget.ContentListView
+        <com.xiaogang.ChildOne.widget.ContentListView
                 android:id="@+id/lstv"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"

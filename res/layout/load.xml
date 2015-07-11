@@ -46,7 +46,7 @@
                 <TextView android:layout_width="match_parent"
                           android:gravity="bottom|center"
                           android:textColor="@color/light_gray"
-                          android:text="顺德幼儿园科技有限公司 发行"
+                          android:text="佛山市清盛智能科技有限公司发行"
                           android:textSize="16sp"
                           android:layout_height="wrap_content"/>
         </LinearLayout>

@@ -65,6 +65,10 @@ public class SendGroupMessageActivity extends BaseActivity implements View.OnCli
                     @Override
                     public void onResponse(String s) {
                         Gson gson = new Gson();
+                        
+                      // [{"uid":"101","name":"\u4e07\u8001\u5e08","cover":"http:\/\/yey4.xqb668.com\/Uploads\/cover\/101_0.jpg","dept":"\u73ed\u4e3b\u4efb"},
+                        //{"uid":"90","name":"\u8a79\u8001\u5e08","cover":"http:\/\/yey4.xqb668.com\/Uploads\/cover\/90_0.jpg","dept":"\u8001\u5e2b"},
+                       //{"uid":"89","name":"teacher","cover":"http:\/\/yey4.xqb668.com\/Uploads\/cover\/89_0.jpg","dept":"\u8001\u5e2b"}]}
                         if (CommonUtil.isJson(s)){
                             TongxunluDATA data = gson.fromJson(s, TongxunluDATA.class);
                             final List<Tongxunlu> list = data.getData();

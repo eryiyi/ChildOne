@@ -39,7 +39,7 @@
             android:visibility="gone" />
     </RelativeLayout>
 
-    <com.qd.recorder.ProgressView
+    <com.xiaogang.ChildOne.recorder.ProgressView
         android:id="@+id/recorder_progress"
         android:layout_width="match_parent"
         android:layout_height="6dp"

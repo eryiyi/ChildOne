@@ -11,7 +11,7 @@ import java.util.Date;
 import java.util.GregorianCalendar;
 
 /**
- * Created by liuzwei on 2014/11/20.
+ * yanglq
  */
 public class CommonUtil {
     //判断是否为JSOn格式

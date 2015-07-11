@@ -4,8 +4,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical"
-        android:background="@drawable/baiban"
-        >
+        android:background="@drawable/baiban">
 
 
 
@@ -53,7 +52,7 @@
                       android:layout_height="wrap_content"/>
             <TextView android:layout_width="wrap_content"
                       android:layout_weight="1"
-                      android:text="公告栏"
+                      android:text="校园公告"
                       android:gravity="center"
                       android:textColor="#000000"
                       android:textSize="16sp"
@@ -115,14 +114,14 @@
                          android:background="@drawable/selected"
                          android:layout_gravity="center"
                          android:layout_height="wrap_content"/>
-            <ImageButton android:layout_width="wrap_content"
+            <!-- <ImageButton android:layout_width="wrap_content"
                       android:layout_marginLeft="10dp"
                          android:background="@drawable/unselected"
+                         android:layout_height="wrap_content"/> -->
+            <ImageButton android:layout_width="wrap_content"
+                         android:layout_marginLeft="10dp"
+                         android:background="@drawable/unselected"
                          android:layout_height="wrap_content"/>
-            <!--<ImageButton android:layout_width="wrap_content"-->
-                         <!--android:layout_marginLeft="10dp"-->
-                         <!--android:background="@drawable/unselected"-->
-                         <!--android:layout_height="wrap_content"/>-->
         </LinearLayout>
     </LinearLayout>
 

@@ -61,10 +61,7 @@ public class FaceAdapter extends BaseAdapter {
         } else {
             viewHolder=(ViewHolder)convertView.getTag();
         }
-        if(emoji.getId() == R.drawable.face_del_icon) {
-            convertView.setBackgroundDrawable(null);
-            viewHolder.iv_face.setImageResource(emoji.getId());
-        } else if(TextUtils.isEmpty(emoji.getCharacter())) {
+        if(TextUtils.isEmpty(emoji.getCharacter())) {
             convertView.setBackgroundDrawable(null);
             viewHolder.iv_face.setImageDrawable(null);
         } else {

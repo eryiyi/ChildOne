@@ -31,24 +31,34 @@
             android:layout_alignParentLeft="true"
             android:layout_alignParentTop="true"
             android:src="@drawable/txhc"
-            android:clickable="true"
-             />
+            android:clickable="true"/>
 
-        <TextView
-            android:id="@+id/tv_chatcontent"
-            style="@style/chat_content_date_style"
+        <LinearLayout
+            android:id="@+id/content_ll"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="10dp"
             android:layout_toRightOf="@id/iv_userhead"
-            android:background="@drawable/chatfrom_bg" />
+            android:layout_marginLeft="10dp">
+            <TextView
+	            android:id="@+id/tv_chatcontent"
+	            style="@style/chat_content_date_style"
+	            android:layout_width="wrap_content"
+	            android:layout_height="wrap_content"
+	            android:background="@drawable/chatfrom_bg" />
+        	<ImageView 
+	            android:id="@+id/content_iv"
+	            android:layout_width="80dip"
+	            android:layout_height="80dip"
+	            android:visibility="gone"/>
+        </LinearLayout>
+        
 
         <TextView
             android:id="@+id/tv_time"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginRight="10dp"
-            android:layout_toRightOf="@id/tv_chatcontent"
+            android:layout_toRightOf="@id/content_ll"
             android:clickable="true"
             android:focusable="true"
             android:gravity="left|center"

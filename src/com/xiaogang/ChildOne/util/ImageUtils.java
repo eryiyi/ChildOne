@@ -5,10 +5,105 @@ import android.content.Context;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.net.Uri;
+import android.util.Log;
 
 import java.io.*;
 
 public class ImageUtils {
+	
+	public static Bitmap createImage(String filepath){
+		Bitmap bitmap = null;
+		BitmapFactory.Options bfo = new BitmapFactory.Options();
+		bfo.inJustDecodeBounds = true;
+		BitmapFactory.decodeFile(filepath, bfo);
+		bfo.inSampleSize = computeSampleSize(bfo,-1,800*600);
+		bfo.inJustDecodeBounds =false;
+		try{
+			bitmap = BitmapFactory.decodeFile(filepath, bfo);  
+		}catch (Exception e) {
+		
+		}
+		return bitmap;
+	}
+	
+	
+	public static int computeSampleSize(BitmapFactory.Options bfo,
+			int minSideLength,int maxNumOfPixels){
+		int roundedSize;
+		int initialSize = computeInitialSampleSize(bfo, minSideLength,maxNumOfPixels);
+		if(initialSize<=8){
+		roundedSize=1;
+		while(roundedSize<initialSize){
+			roundedSize <<= 1;
+		}
+		}else{
+		 roundedSize = (initialSize + 7) / 8 * 8; 
+		}
+		
+		return roundedSize;
+	}
+	
+   public static Bitmap compressImage(Bitmap bitmap){
+		
+		ByteArrayOutputStream bos = new ByteArrayOutputStream();
+		bitmap.compress(Bitmap.CompressFormat.JPEG, 100, bos);
+		int options = 100;
+		while(bos.toByteArray().length/1024>15){
+			 bos.reset();//重置bos即清空bos 
+			 bitmap.compress(Bitmap.CompressFormat.JPEG, options, bos);
+			 options -= 10;//每次都减少10 
+			 Log.i("options", options+"");
+		}
+		ByteArrayInputStream isBm = new ByteArrayInputStream(bos.toByteArray());//把压缩后的数据bos存放到ByteArrayInputStream中
+		Bitmap image = BitmapFactory.decodeStream(isBm, null, null);
+	
+		return image;
+	}
+	
+	public static boolean saveCompressBitmap(File file){
+		FileOutputStream outputStream = null;
+		Bitmap bitmap = createImage(file.toString());
+		bitmap = compressImage(bitmap);
+		//Bitmap bitmap = createImage(file.toString());
+		try {
+			outputStream = new FileOutputStream(file);
+			return bitmap.compress(Bitmap.CompressFormat.JPEG, 100,outputStream);
+		} catch (FileNotFoundException e) {
+			e.printStackTrace();
+		}finally{
+			if(outputStream!=null){
+				try {
+					outputStream.flush();
+					outputStream.close();
+				} catch (IOException e) {
+					e.printStackTrace();
+				}
+				
+			}
+		}
+		return false;
+	} 
+
+	private static int computeInitialSampleSize(BitmapFactory.Options options,  
+           int minSideLength, int maxNumOfPixels) {  
+		double w = options.outWidth;  
+		double h = options.outHeight;  
+		int lowerBound = (maxNumOfPixels == -1) ? 1 : (int) Math.ceil(Math  
+		                .sqrt(w * h / maxNumOfPixels));  
+		int upperBound = (minSideLength == -1) ? 128 : (int) Math.min(  
+		                Math.floor(w / minSideLength), Math.floor(h / minSideLength));  
+		if (upperBound < lowerBound) {  
+		           // return the larger one when there is no overlapping zone.  
+		       return lowerBound;  
+		}  
+		if ((maxNumOfPixels == -1) && (minSideLength == -1)) {  
+			return 1;  
+		} else if (minSideLength == -1) {  
+		    return lowerBound;  
+		} else {  
+			return upperBound;  
+		}  
+	}
 
 	/**
 	 * 

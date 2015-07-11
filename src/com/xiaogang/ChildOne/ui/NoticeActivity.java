@@ -88,7 +88,7 @@ public class NoticeActivity extends BaseActivity implements OnClickContentItemLi
     }
 
     private void getData(){
-        String uri = String.format(InternetURL.GET_YUYING_MESSAGE + "?school_id=%s&pageIndex=%d&pageSize=%d", account.getSchool_id(), pageIndex, 20);
+        String uri = String.format(InternetURL.GET_NATICE + "?school_id=%s&pageIndex=%d&pageSize=%d", account.getSchool_id(), pageIndex, 20);
         StringRequest request = new StringRequest(Request.Method.GET,
                 uri,
                 new Response.Listener<String>() {

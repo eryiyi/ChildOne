@@ -12,6 +12,7 @@ import com.xiaogang.ChildOne.R;
 import com.xiaogang.ChildOne.adapter.AnimateFirstDisplayListener;
 import com.xiaogang.ChildOne.entity.Account;
 import com.xiaogang.ChildOne.util.RoundImagePhoto;
+import com.xiaogang.ChildOne.util.TimeUtils;
 
 /**
  * Created by liuzwei on 2014/11/18.
@@ -24,6 +25,7 @@ public class SelectIdentityActivity extends BaseActivity implements View.OnClick
     private ImageView motherPhoto;
     private TextView fatherName;
     private TextView motherName;
+    private TextView pre_login_time;
 
     private RoundImagePhoto roundImagePhoto;
     ImageLoader imageLoader = ImageLoader.getInstance();//图片加载类
@@ -55,6 +57,10 @@ public class SelectIdentityActivity extends BaseActivity implements View.OnClick
         fatherName = (TextView) findViewById(R.id.identity_father_name);
         motherPhoto = (ImageView) findViewById(R.id.identity_mother);
         motherName = (TextView) findViewById(R.id.identity_mother_name);
+        pre_login_time = (TextView) this.findViewById(R.id.pre_login_time);
+        pre_login_time.setText(getGson().fromJson(sp.getString(Constants.LOGIN_TIME, ""), String.class));
+        String  loginTime = TimeUtils.getLoginTime();
+        saveAccount(loginTime);
         father.setOnClickListener(this);
         mother.setOnClickListener(this);
         
@@ -72,5 +78,10 @@ public class SelectIdentityActivity extends BaseActivity implements View.OnClick
         }
         Intent intent = new Intent(SelectIdentityActivity.this, CenterActivity.class);
         startActivity(intent);
+    }
+    
+    
+    private void saveAccount(String loginTime){
+        save(Constants.LOGIN_TIME, "上一次登入日期："+loginTime);
     }
 }

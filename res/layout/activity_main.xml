@@ -4,20 +4,22 @@
                 android:layout_weight="1"
                 android:background="@drawable/baiban"
                 android:layout_height="fill_parent" >
-    <LinearLayout android:layout_width="match_parent"
-                  android:orientation="vertical"
-                  android:layout_weight="1"
-                  android:background="@drawable/top_background"
-                  android:layout_height="0dp">
-            <LinearLayout android:layout_width="match_parent"
-                          android:layout_marginTop="5dp"
-                          android:orientation="horizontal"
-                          android:layout_height="wrap_content">
-                <ImageView android:layout_width="wrap_content"
-                           android:src="@drawable/center_left"
-                           android:id="@+id/setmenu"
-                           android:layout_marginLeft="10dp"
-                           android:layout_height="wrap_content"/>
+   		 <LinearLayout 
+        		android:layout_width="match_parent"
+                android:orientation="vertical"
+                android:background="@drawable/top_background"
+                android:layout_height="60dip">
+               <LinearLayout 
+                	android:layout_width="match_parent"
+                    android:layout_marginTop="5dp"
+                    android:orientation="horizontal"
+                    android:layout_height="wrap_content">
+                	<ImageView 
+                    	android:layout_width="wrap_content"
+                        android:src="@drawable/center_left"
+                        android:id="@+id/setmenu"
+                        android:layout_marginLeft="10dp"
+                        android:layout_height="wrap_content"/>
                 <LinearLayout android:layout_width="wrap_content"
                               android:layout_weight="1"
                               android:layout_gravity="center"
@@ -48,26 +50,43 @@
                            android:layout_marginRight="10dp"
                            android:layout_height="wrap_content"/>
             </LinearLayout>
-            <LinearLayout android:layout_width="match_parent"
+            </LinearLayout>
+            <FrameLayout android:layout_width="match_parent"
                           android:layout_weight="1"
-                          android:layout_marginTop="20dp"
-                          android:layout_height="wrap_content">
-
-            </LinearLayout>
-            <LinearLayout android:layout_width="match_parent"
-                          android:gravity="bottom"
-                          android:layout_height="wrap_content">
-                <ImageView android:layout_width="match_parent"
-                           android:src="@drawable/center_ad"
-                           android:layout_height="wrap_content"/>
-            </LinearLayout>
-        </LinearLayout>
+                          android:layout_height="0.0dip"
+                          android:orientation="vertical">
+                 <android.support.v4.view.ViewPager
+        			android:id="@+id/viewpager"
+        			android:layout_width="fill_parent"
+        			android:layout_height="wrap_content"
+        			android:scrollbars="none" />
+                 
+                 <RelativeLayout 
+            		android:layout_width="match_parent"
+           			android:layout_height="match_parent"
+           			android:layout_gravity="center_vertical">
+        			<TextView 
+            			android:id="@+id/activity_main_biaotu_tv"
+		            	android:layout_width="wrap_content"
+		            	android:background="@drawable/bg_src"
+		            	android:layout_height="40dip"
+		            	android:textSize="20sp"
+		            	android:textColor="#fff"
+		            	android:focusable="true"
+		            	android:focusableInTouchMode="true"
+		            	android:singleLine="true"
+		            	android:layout_alignParentBottom="true"
+		            	android:gravity="right|center_vertical"/>
+        </RelativeLayout>
+         </FrameLayout>
+         
 
 
     <LinearLayout android:layout_width="match_parent"
                   android:orientation="vertical"
-                  android:layout_weight="1"
-                  android:layout_height="0dp">
+                  android:layout_weight="1.5"
+                  android:background="#fff"
+                  android:layout_height="0.0dp">
         <android.support.v4.view.ViewPager
                 android:id="@+id/vPager"
                 android:layout_weight="1"

@@ -2,6 +2,7 @@ package com.xiaogang.ChildOne.adapter;
 
 import android.content.Context;
 import android.content.SharedPreferences;
+import android.graphics.Bitmap;
 import android.media.MediaPlayer;
 import android.text.SpannableString;
 import android.util.Log;
@@ -20,6 +21,9 @@ import com.xiaogang.ChildOne.entity.Account;
 import com.xiaogang.ChildOne.entity.Message;
 import com.xiaogang.ChildOne.entity.UserData;
 import com.xiaogang.ChildOne.ui.Constants;
+import com.xiaogang.ChildOne.util.FileUtils;
+import com.xiaogang.ChildOne.util.ImageUtils;
+import com.xiaogang.ChildOne.util.InternetURL;
 import com.xiaogang.ChildOne.util.TimeUtils;
 import com.xiaogang.ChildOne.util.face.FaceConversionUtil;
 
@@ -100,7 +104,7 @@ public class ChatAdapter extends BaseAdapter {
             viewHolder.photo = (ImageView) convertView.findViewById(R.id.iv_userhead);
             viewHolder.name = (TextView) convertView.findViewById(R.id.tv_username);
             viewHolder.content = (TextView) convertView.findViewById(R.id.tv_chatcontent);
-
+            viewHolder.content_iv = (ImageView) convertView.findViewById(R.id.content_iv);
             convertView.setTag(viewHolder);
         }else{
             viewHolder = (ViewHolder) convertView.getTag();
@@ -118,19 +122,33 @@ public class ChatAdapter extends BaseAdapter {
             Log.e("ChatAdapter", e.getMessage());
 
         }
-        if (message.getUrl()!= null && message.getUrl().contains(".mp3")) {
+        if (message.getType().equals("3")) {
+        	viewHolder.content.setVisibility(View.VISIBLE);
+        	viewHolder.content_iv.setVisibility(View.GONE);
             viewHolder.content.setText("");
             viewHolder.content.setCompoundDrawablesWithIntrinsicBounds(0, 0, R.drawable.chatto_voice_playing, 0);
-        } else {
+        }else if(message.getType().equals("0")){
+        	viewHolder.content.setVisibility(View.VISIBLE);
+        	viewHolder.content_iv.setVisibility(View.GONE);
             SpannableString spannableString = FaceConversionUtil.getInstace().getExpressionString(context,message.getContent());
             viewHolder.content.setText(spannableString);
-            viewHolder.content.setCompoundDrawablesWithIntrinsicBounds(0, 0, 0, 0);
+            //viewHolder.content.setCompoundDrawablesWithIntrinsicBounds(0, 0, 0, 0);
+        }else if(message.getType().equals("1")){
+        	viewHolder.content.setVisibility(View.GONE);
+        	viewHolder.content_iv.setVisibility(View.VISIBLE);
+        	//if(message.getUrl().substring(0, 4).equals("http")){
+        	String urlString = InternetURL.INTENT+message.getUrl();
+        	imageLoader.displayImage(urlString, viewHolder.content_iv, HomeBabyApplication.txOptions, animateFirstListener);
+        	//}else{
+        	//	Bitmap  bitmap = ImageUtils.createImage(message.getUrl());
+        		//viewHolder.content_iv.setImageBitmap(bitmap);
+        	//}
         }
         viewHolder.content.setOnClickListener(new View.OnClickListener() {
 
             public void onClick(View v) {
                 if (message.getUrl() != null && message.getUrl().contains(".mp3")) {
-                    playMusic(message.getContent()) ;
+                    playMusic(InternetURL.INTENT+message.getUrl()) ;
                 }
             }
         });
@@ -168,5 +186,6 @@ public class ChatAdapter extends BaseAdapter {
         ImageView photo;
         TextView name;
         TextView content;
+        ImageView content_iv;
     }
 }

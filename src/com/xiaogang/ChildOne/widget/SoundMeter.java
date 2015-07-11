@@ -1,7 +1,8 @@
 package com.xiaogang.ChildOne.widget;
 
 import android.os.Environment;
-import com.xiaogang.ChildOne.demo.MP3Recorder;
+
+import com.kubility.demo.MP3Recorder;
 
 public  class SoundMeter {
 	static final private double EMA_FILTER = 0.6;

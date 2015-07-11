@@ -7,7 +7,9 @@
         >
 
     <!-- head开始 -->
-    <RelativeLayout
+    
+    
+     <FrameLayout
             android:id="@+id/lp_01"
             android:layout_width="match_parent"
             android:layout_height="45dp"
@@ -18,22 +20,32 @@
         <ImageView
                 android:id="@+id/picturesback"
                 android:layout_width="wrap_content"
-                android:layout_height="35dp"
+                android:layout_height="45dp"
                 android:src="@drawable/top_back"
-                android:paddingLeft="15dp"
-                android:paddingTop="10dp"
-                android:paddingRight="10dp"/>
+                android:paddingLeft="20dp"
+                android:paddingRight="30dp"/>
         <TextView
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:text="相册详情"
-                android:gravity="center_vertical"
-                android:layout_centerHorizontal="true"
+                android:text="活动剪影"
+                android:gravity="center"
                 android:textColor="#ffffff"
                 android:textSize="18sp"
-                android:id="@+id/title"
-                />
-    </RelativeLayout>
+                android:id="@+id/title"/>
+         <RelativeLayout 
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+            <TextView
+            	android:id="@+id/shangchuan_tv"
+                android:layout_width="100dip"
+                android:layout_height="match_parent"
+                android:text="上传图片"
+                android:gravity="center"
+                android:textColor="#ffffff"
+                android:layout_alignParentRight="true"
+                android:textSize="18sp"/>
+            </RelativeLayout>
+    </FrameLayout>
     <!-- head结束 -->
     <!-- 主体 -->
     <RelativeLayout

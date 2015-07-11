@@ -25,6 +25,15 @@
         <item name="android:layout_height">31dip</item>
         <item name="android:layout_gravity">center</item>
     </style>
+    
+     <style name="mystyle" parent="android:Animation">  
+        <item name="@android:windowEnterAnimation">@anim/dialog_enter</item>  //进入时的动画   
+        <item name="@android:windowExitAnimation">@anim/dialog_exit</item>    //退出时的动画   
+    </style>  
+    
+     <style name="myDialog" parent="@android:style/Theme.Dialog">
+        <item name="android:windowNoTitle">true</item>  
+    </style>
 
 
     <style name="zhuye_xinxi" >
@@ -97,11 +106,9 @@
 
 
     <style name="chat_content_date_style">
-        <item name="android:minHeight">50dp</item>
-        <item name="android:gravity">left|center</item>
+        <item name="android:gravity">center</item>
         <item name="android:textColor">#000000</item>
-        <item name="android:textSize">15sp</item>
-        <item name="android:lineSpacingExtra">2dp</item>
+        <item name="android:textSize">18sp</item>
         <item name="android:clickable">true</item>
         <item name="android:focusable">true</item>
         <item name="android:background">#bfbfbf</item>
@@ -196,6 +203,17 @@
         <!--<attr name="border_width" format="dimension" />-->
         <!--<attr name="border_color" format="color" />-->
     <!--</declare-styleable>-->
-
+	  <item type="id" name="auto_focus"/>
+  	  <item type="id" name="decode"/>
+  	  <item type="id" name="decode_failed"/>
+      <item type="id" name="decode_succeeded"/>
+      <item type="id" name="encode_failed"/>
+      <item type="id" name="encode_succeeded"/>
+      <item type="id" name="launch_product_query"/>
+      <item type="id" name="quit"/>
+      <item type="id" name="restart_preview"/>
+      <item type="id" name="return_scan_result"/>
+      <item type="id" name="search_book_contents_failed"/>
+      <item type="id" name="search_book_contents_succeeded"/>
 
 </resources>

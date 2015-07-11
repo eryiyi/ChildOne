@@ -4,23 +4,19 @@ package com.xiaogang.ChildOne.entity;
  * Created by liuzwei on 2014/11/18.
  */
 public class Baby {
-    private String id;//宝宝ID
+    private String child_id;//宝宝ID
     private String name;//宝宝姓名
 
-    public Baby(String id, String name){
-        this.id = id;
-        this.name = name;
-    }
+    
+    public String getChild_id() {
+		return child_id;
+	}
 
-    public String getId() {
-        return id;
-    }
+	public void setChild_id(String child_id) {
+		this.child_id = child_id;
+	}
 
-    public void setId(String id) {
-        this.id = id;
-    }
-
-    public String getName() {
+	public String getName() {
         return name;
     }
 

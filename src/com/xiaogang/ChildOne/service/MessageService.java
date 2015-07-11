@@ -23,7 +23,7 @@ import com.xiaogang.ChildOne.util.upload.MultiPartStack;
 import java.util.ArrayList;
 
 /**
- * Created by liuzwei on 2014/12/12.
+ * yanglq
  */
 public class MessageService extends Service {
     private static final String TAG = MessageService.class.getSimpleName();
@@ -32,7 +32,7 @@ public class MessageService extends Service {
     private MessageBinder messageBinder = new MessageBinder();
     private String uid;
     private String friend_id;
-    private String user_type;
+  //  private String user_type;
     private Intent intent = new Intent("com.app.ebaebo.ui.RECEIVER");
     private static RequestQueue requestQueue;
     private MessageThread messageThread;
@@ -51,6 +51,11 @@ public class MessageService extends Service {
     public IBinder onBind(Intent intent) {
 
         Log.i(TAG, "Start bind...");
+        ArrayList<String> data = intent.getStringArrayListExtra("getData");
+        uid = data.get(0);
+        Log.i(TAG, uid);
+        friend_id = data.get(1);
+       // user_type = data.get(2);
         return messageBinder;
     }
 
@@ -64,10 +69,7 @@ public class MessageService extends Service {
     public void onStart(Intent intent, int startId) {
         Log.e(TAG, "start onStart~~~");
         super.onStart(intent, startId);
-        ArrayList<String> data = intent.getStringArrayListExtra("getData");
-        uid = data.get(0);
-        friend_id = data.get(1);
-        user_type = data.get(2);
+       
         requestQueue = Volley.newRequestQueue(getApplicationContext(), new MultiPartStack());
 
         isRun = true;
@@ -98,15 +100,14 @@ public class MessageService extends Service {
     private void getMsg() {
         StringRequest request = new StringRequest(
                 Request.Method.GET,
-                String.format(InternetURL.MESSAGE_DETAIL_LIST + "?uid=%s&friend_id=%s&new=1&user_type=%s", uid, friend_id, user_type),
+                String.format(InternetURL.MESSAGE_DETAIL_LIST + "?uid=%s&friend_id=%s&new=%s", uid, friend_id,"1"),
                 new Response.Listener<String>() {
                     @Override
                     public void onResponse(String s) {
                         //
 
                         Gson gson = new Gson();
-                        if (CommonUtil.isJson(s)) {
-
+                        if (CommonUtil.isJson(s)){
                             ErrorDATA data = gson.fromJson(s, ErrorDATA.class);
                             if (data.getCode() == -1) {
                                 Log.e(TAG, data.getMsg());

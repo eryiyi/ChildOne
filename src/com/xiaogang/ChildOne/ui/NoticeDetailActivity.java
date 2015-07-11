@@ -77,7 +77,7 @@ public class NoticeDetailActivity extends BaseActivity implements View.OnClickLi
     }
 
     private void getData(){
-        String uri = String.format(InternetURL.GET_YUYING_DETAIL + "?news_id=%s", id);
+        String uri = String.format(InternetURL.GET_NATICE_DAIL + "?id=%s", id);
         StringRequest request = new StringRequest(Request.Method.GET,
                 uri,
                 new Response.Listener<String>() {

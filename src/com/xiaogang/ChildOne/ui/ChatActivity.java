@@ -1,19 +1,30 @@
 package com.xiaogang.ChildOne.ui;
 
+import android.app.Activity;
+import android.app.AlertDialog;
 import android.content.*;
+import android.database.Cursor;
+import android.net.Uri;
 import android.os.Bundle;
 import android.os.Environment;
 import android.os.Handler;
 import android.os.IBinder;
+import android.provider.MediaStore;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.util.Log;
+import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.MotionEvent;
 import android.view.View;
+import android.view.Window;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
 import android.widget.*;
+
 import com.android.volley.AuthFailureError;
 import com.android.volley.Request;
+import com.android.volley.RequestQueue;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
@@ -28,8 +39,11 @@ import com.xiaogang.ChildOne.entity.Message;
 import com.xiaogang.ChildOne.service.MessageService;
 import com.xiaogang.ChildOne.util.CommonUtil;
 import com.xiaogang.ChildOne.util.DownloadUtil;
+import com.xiaogang.ChildOne.util.FileUtils;
+import com.xiaogang.ChildOne.util.ImageUtils;
 import com.xiaogang.ChildOne.util.InternetURL;
 import com.xiaogang.ChildOne.util.StringUtil;
+import com.xiaogang.ChildOne.util.TimeUtils;
 import com.xiaogang.ChildOne.widget.SoundMeter;
 
 
@@ -42,7 +56,7 @@ import java.util.*;
  * 双人聊天交互页面
  */
 public class ChatActivity extends BaseActivity implements View.OnClickListener {
-    private MessageService messageService;
+   
     private ImageView back;
     private ListView listView;
     private EditText sendMessage;
@@ -73,12 +87,45 @@ public class ChatActivity extends BaseActivity implements View.OnClickListener {
     private List<Message> list = new ArrayList<Message>();
     private static String PATH = Environment.getExternalStorageDirectory().getAbsolutePath();
     private MessageReceiver messageReceiver;
+    private MessageService msgService;
     private int pageIndex = 0;
+    private ImageView chat_imag_iv;
+    private Button paizhao_bt = null;
+	private Button xiangce_bt = null;
+	private Button cancle_bt = null;
+	private AlertDialog dialog = null;
+	
+	private String imageName = null;
+	private Uri mPhotoOnSDCardUri = null;
+	public  File imageFile = null;
+	private Cursor cursor = null;
+	private String url;
+	
+	
+	private Handler handler  = new Handler(){
+
+		@Override
+		public void handleMessage(android.os.Message msg) {
+			super.handleMessage(msg);
+			switch(msg.what){
+			case 0x01:
+				 listView.setSelection(list.size()-1);
+                 adapter.notifyDataSetChanged();
+				break;
+			case 0x02:
+				
+				break;
+			
+			}
+		}
+		
+	};
+	
 
     private ServiceConnection serviceConnection = new ServiceConnection() {
         @Override
         public void onServiceConnected(ComponentName name, IBinder service) {
-            messageService = ((MessageService.MessageBinder)service).getService();
+        	msgService = ((MessageService.MessageBinder)service).getService();
         }
 
         @Override
@@ -97,13 +144,34 @@ public class ChatActivity extends BaseActivity implements View.OnClickListener {
         initView();
         chatTitle.setText(String.format("与 %s 聊天中", accountMessage.getName()));
 
-        getData("1", "1", "20", true);
+        getData("0", "1", "20", true);
         bindMessageService();
         messageReceiver = new MessageReceiver();
         IntentFilter intentFilter = new IntentFilter();
         intentFilter.addAction("com.app.ebaebo.ui.RECEIVER");
         registerReceiver(messageReceiver, intentFilter);
 //        adapter = new ChatAdapter(list, mContext,sp, )
+        sendMessage.addTextChangedListener(new TextWatcher() {
+			@Override
+			public void onTextChanged(CharSequence arg0, int arg1, int arg2, int arg3) {
+				
+			}
+			
+			@Override
+			public void beforeTextChanged(CharSequence arg0, int arg1, int arg2,
+					int arg3) {
+				chat_imag_iv.setVisibility(View.VISIBLE);
+				send.setVisibility(View.GONE);
+			}
+			
+			@Override
+			public void afterTextChanged(Editable arg0) {
+				if(!sendMessage.getText().toString().trim().equals("")){
+					chat_imag_iv.setVisibility(View.GONE);
+					send.setVisibility(View.VISIBLE);
+				}
+			}
+		});
     }
 
     private void bindMessageService(){
@@ -147,8 +215,144 @@ public class ChatActivity extends BaseActivity implements View.OnClickListener {
             case R.id.chat_back://返回按钮
                 finish();
                 break;
+            case R.id.chat_imag_iv:
+            	dialog();
+            	break;
+            case R.id.cancle_bt:
+            	dialog.dismiss();
+            	break;
+            case R.id.paizhao_bt:
+            	imageName = TimeUtils.getFileName();
+				imageFile = new File(FileUtils.createFile(),imageName);
+            	paiZhao();
+            	dialog.dismiss();
+            	break;
+            case R.id.xiangce_bt:
+            	xiangCe();
+            	dialog.dismiss();
+            	break;
         }
     }
+    
+    
+    /**
+     * 选择对话框
+     * @param code
+     */
+	private void dialog(){
+	//	this.mFile = file;
+		LayoutInflater inflater = ((Activity) this).getLayoutInflater();
+	//	LayoutInflater inflater = LayoutInflater.from(ChatActivity.this);
+		View layout = inflater.inflate(R.layout.paizhao_xiangce,null);
+		LinearLayout dailog_ui_ll = (LinearLayout) layout.findViewById(R.id.paizhao_ll);
+		paizhao_bt = (Button) layout.findViewById(R.id.paizhao_bt);
+		xiangce_bt = (Button) layout.findViewById(R.id.xiangce_bt);
+		cancle_bt = (Button) layout.findViewById(R.id.cancle_bt);
+		dialog = new AlertDialog.Builder(this).setCancelable(false)
+		.setView(dailog_ui_ll).create();
+		paizhao_bt.setOnClickListener(this);
+		
+		xiangce_bt.setOnClickListener(this);
+		cancle_bt.setOnClickListener(this);
+		Window window = dialog.getWindow();
+		window.setGravity(Gravity.BOTTOM);  //此处可以设置dialog显示的位置   
+		window.setWindowAnimations(R.style.mystyle);  //添加动画   
+		dialog.show();  
+	}
+    
+    /**
+	 * 从相册中获取选择
+	 * @param code
+	 */
+	private void xiangCe(){
+		Intent intent = new Intent(Intent.ACTION_PICK, null);
+		intent.setDataAndType(MediaStore.Images.Media.EXTERNAL_CONTENT_URI, "image/*");
+		startActivityForResult(intent,15);
+	}
+	
+	/**
+	 * 拍照
+	 * @param code
+	 */
+	private void paiZhao(){
+		Intent camaraIntent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
+		imageName = TimeUtils.getFileName();
+		mPhotoOnSDCardUri =  Uri.fromFile(imageFile);
+		camaraIntent.putExtra(MediaStore.EXTRA_OUTPUT,mPhotoOnSDCardUri);
+		this.startActivityForResult(camaraIntent, 10);
+	}
+	
+	@Override
+	protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+		super.onActivityResult(requestCode, resultCode, data);
+		if(resultCode==RESULT_OK){
+			switch(requestCode){
+			case 10:
+				if(imageFile==null){
+					Toast.makeText(this, "拍照失败，请重新拍照", 0).show();
+					return;
+				}
+				
+				ImageUtils.saveCompressBitmap(imageFile);
+				String imagUrl = imageFile.toString(); 
+				sendMsg("1",imagUrl);
+				
+				break;
+			case 15:
+				if (data == null) {
+					return;
+				}
+		        if (!Environment.getExternalStorageState().equals(Environment.MEDIA_MOUNTED)) {
+		          Toast.makeText(this, "SD不可用",1).show();
+		          return;
+		        }
+		        String menFile = startImageAction(data);
+		        sendMsg("1",menFile);
+		        /*listView.setSelection(list.size()-1);
+                adapter.notifyDataSetChanged();*/
+				break;
+			}
+			
+		}
+		
+	}
+	
+	/**
+	 * 从相册选择图片
+	 * @param data
+	 * @return
+	 */
+	private String startImageAction(Intent data) {
+		String picPath = null;
+		if(data == null)
+		{
+			Toast.makeText(this, "选择图片文件出错", Toast.LENGTH_LONG).show();
+			return "";
+		}
+		Uri photoUri = data.getData();
+		if(photoUri == null )
+		{
+			Toast.makeText(this, "选择图片文件出错", Toast.LENGTH_LONG).show();
+			return "";
+		}
+		String[] pojo = {MediaStore.Images.Media.DATA};
+		cursor = managedQuery(photoUri, pojo, null, null, null);
+		if(cursor != null )
+		{
+		int columnIndex = cursor.getColumnIndexOrThrow(pojo[0]);
+		cursor.moveToFirst();
+		picPath = cursor.getString(columnIndex);
+		//cursor.close();
+		}
+		if(picPath != null && ( picPath.endsWith(".png") || picPath.endsWith(".PNG") ||picPath.endsWith(".jpg") ||picPath.endsWith(".JPG") ))
+		{
+		
+			return picPath;
+		}else{
+			Toast.makeText(this, "选择图片文件不正确", Toast.LENGTH_LONG).show();
+			return "";
+		}
+	 }
 
     private void initView(){
         layoutBottom = (LinearLayout) this.findViewById(R.id.rl_bottom);
@@ -174,10 +378,12 @@ public class ChatActivity extends BaseActivity implements View.OnClickListener {
         listView = (ListView) this.findViewById(R.id.chat_listview);
         sendMessage = (EditText) layoutBottom.findViewById(R.id.chat_sendmessage);
         send = (Button) layoutBottom.findViewById(R.id.chat_sendbtn);
+        chat_imag_iv = (ImageView) findViewById(R.id.chat_imag_iv);
         chatTitle = (TextView) this.findViewById(R.id.chat_title);
 
         back.setOnClickListener(this);
         send.setOnClickListener(this);
+        chat_imag_iv.setOnClickListener(this);
 
         //语音文字切换按钮
         chatting_mode_btn.setOnClickListener(new View.OnClickListener() {
@@ -408,7 +614,6 @@ public class ChatActivity extends BaseActivity implements View.OnClickListener {
                         }, 500);
                         return false;
                     }
-
                     final Message message = new Message(account.getUid(),
                             accountMessage.getUid(),
                             System.currentTimeMillis()/1000+"",
@@ -445,7 +650,9 @@ public class ChatActivity extends BaseActivity implements View.OnClickListener {
                                 }
                             },
                             null);
-                    list.add(message);
+                   list.add(message);
+                   // sendMsg("3",voiceName);
+                   
                     listView.setSelection(list.size()-1);
                     adapter.notifyDataSetChanged();
                     rcChat_popup.setVisibility(View.GONE);
@@ -477,6 +684,52 @@ public class ChatActivity extends BaseActivity implements View.OnClickListener {
             }
         }
         return super.onTouchEvent(event);
+    }
+    
+    
+    
+    private void sendMsg(String type,String fileUrl){
+    	 final Message message = new Message(account.getUid(),
+                 accountMessage.getUid(),
+                 System.currentTimeMillis()/1000+"",
+                 type,
+                 fileUrl);
+         message.setUrl(fileUrl);
+
+         //上传文件
+         File file = new File(fileUrl);
+         Map<String, File> files = new HashMap<String, File>();
+         files.put("file", file);
+         Map<String, String> params = new HashMap<String, String>();
+         addPutUploadFileRequest(
+                 InternetURL.UPLOAD_FILE,
+                 files,
+                 params,
+                 new Response.Listener<String>() {
+                     @Override
+                     public void onResponse(String s) {
+                         if (CommonUtil.isJson(s)) {
+                             UploadDATA data = getGson().fromJson(s, UploadDATA.class);
+                             //上传文件成功后进行发送消息
+                             if (data.getCode() == 200){
+                                 message.setUrl(data.getUrl());
+                                 sendMsg(message);
+                                 list.add(message);
+                                 handler.sendEmptyMessage(0x01);
+                             }else{
+                            	handler.sendEmptyMessage(0x02); 
+                             }
+                         }
+                     }
+                 },
+                 new Response.ErrorListener() {
+                     @Override
+                     public void onErrorResponse(VolleyError volleyError) {
+
+                     }
+                 },
+                 null);
+       //  list.add(message);
     }
 
     private static final int POLL_INTERVAL = 300;
@@ -547,21 +800,25 @@ public class ChatActivity extends BaseActivity implements View.OnClickListener {
         public void onReceive(Context context, Intent intent) {
             String messages = intent.getStringExtra("messages");
             MessageDATA messageDATA = getGson().fromJson(messages, MessageDATA.class);
-
+            
             List<Message> listMessage = messageDATA.getData().getList();
             if (listMessage.size()> 0) {
                 for (Message message : listMessage) {
-                    if (!StringUtil.isNullOrEmpty(message.getUrl())) {
-                        new Thread(new DownloadUtil(message.getUrl())).start();
-                        message.setUrl(DownloadUtil.getFilePath(message.getUrl()));
-                        list.add(message);
-                    } else {
-                        list.add(message);
-                    }
+                	if(!message.getUrl().equals(url)){
+                		url = message.getUrl();
+                		if (!StringUtil.isNullOrEmpty(message.getUrl())) {
+                			new Thread(new DownloadUtil(message.getUrl())).start();
+                			message.setUrl(DownloadUtil.getFilePath(message.getUrl()));
+                			list.add(message);
+                		} else {
+                			list.add(message);
+                		}
                 }
+               
 //            list.addAll(messageDATA.getData().getList());
-                adapter.notifyDataSetChanged();
+                	 adapter.notifyDataSetChanged();
+                }
             }
-        }
+        }																																																							
     }
 }

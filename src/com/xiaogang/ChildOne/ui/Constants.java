@@ -29,6 +29,9 @@ public class Constants {
     public static final String ACCOUNT_KEY = "account";
     public static final String USERNAME_KEY = "username";
     public static final String PASSWORD_KEY = "password";
+    public static final String PUSERNAME_KEY = "pusername";
+    public static final String PPASSWORD_KEY = "ppassword";
+    public static final String LOGIN_TIME = "LOGETIME";
 
     public static final String ACCOUNT_MESSAGE = "account_message";
 

@@ -18,11 +18,13 @@ import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 
 import com.google.gson.Gson;
+import com.google.gson.reflect.TypeToken;
+import com.kubility.demo.MP3Recorder;
+import com.xiaogang.ChildOne.HomeBabyApplication;
 import com.xiaogang.ChildOne.R;
 import com.xiaogang.ChildOne.data.BabyDATA;
 import com.xiaogang.ChildOne.data.ErrorDATA;
 import com.xiaogang.ChildOne.data.UploadDATA;
-import com.xiaogang.ChildOne.demo.MP3Recorder;
 import com.xiaogang.ChildOne.entity.Account;
 import com.xiaogang.ChildOne.entity.Baby;
 import com.xiaogang.ChildOne.util.CommonUtil;
@@ -36,6 +38,9 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+
+import org.json.JSONArray;
+import org.json.JSONObject;
 
 /**
  * Created by liuzwei on 2014/11/24.
@@ -86,6 +91,7 @@ public class PublishRecordActivity extends BaseActivity implements View.OnClickL
     private ImageView voicePlay;
     private ProgressBar voiceProgressbar;
     private TextView voiceTime;
+    private String contentStr;
 
     private CheckBox isShare;
 
@@ -165,7 +171,7 @@ public class PublishRecordActivity extends BaseActivity implements View.OnClickL
 //        play = (ImageView) findViewById(R.id.publish_record_play);
         voice = (Button) findViewById(R.id.voice_record_btn);
         spinner = (Spinner) findViewById(R.id.publish_record_spinner);
-        content = (EditText) findViewById(R.id.publish_record_content);
+        content = (EditText) findViewById(R.id.voice_content);
 //        cancel = (ImageView) findViewById(R.id.publish_record_cancel);
         isShare = (CheckBox) findViewById(R.id.publish_record_cb);
 
@@ -221,7 +227,12 @@ public class PublishRecordActivity extends BaseActivity implements View.OnClickL
      * 获得宝宝列表
      */
     private void  getBabyList(){
-        String uri = String.format(InternetURL.GET_BABY_URL + "?uid=%s", account.getUid());
+    	String uri ="";
+    	if(HomeBabyApplication.is_student.equals("1")){
+    		uri = String.format(InternetURL.GET_BABY_URL + "?uid=%s", account.getUid());
+    	}else if(HomeBabyApplication.is_student.equals("0")){
+    		uri = String.format(InternetURL.TEACHEAR_GET_BABY_URL+"?uid=%s&class_id=%s", account.getUid(),account.getClass_id());
+    	}
         StringRequest request = new StringRequest(
                 Request.Method.GET,
                 uri,
@@ -229,21 +240,35 @@ public class PublishRecordActivity extends BaseActivity implements View.OnClickL
                     @Override
                     public void onResponse(String s) {
                         Gson gson = new Gson();
+                        List<String> names = null;
                         try{
-                            BabyDATA data = gson.fromJson(s, BabyDATA.class);
-                            babies.addAll(data.getData());
-                            List<String> names = new ArrayList<String>();
-                            for (int i=0; i<babies.size(); i++){
-                                names.add(babies.get(i).getName());
-                            }
-                            spinnerAdapter = new ArrayAdapter<String>(mContext, android.R.layout.simple_spinner_item, names);
+                        	if(HomeBabyApplication.is_student.equals("1")){
+                       		 BabyDATA data = gson.fromJson(s, BabyDATA.class);
+                                babies.addAll(data.getData());
+                                names = new ArrayList<String>();
+                                for (int i=0; i<babies.size(); i++){
+                                    names.add(babies.get(i).getName());
+                                }
+                       	}else{
+                       		JSONObject jsonObject = new JSONObject(s);
+                           	String result_code = jsonObject.getString("code");
+                           	if(result_code.equals("200")){
+                           		JSONArray jsonDatas = jsonObject.getJSONObject("data").getJSONArray("child");
+                               	babies = gson.fromJson(jsonDatas.toString(), new TypeToken<List<Baby>>(){}.getType());
+                               	names = new ArrayList<String>();
+                                    for (int i=0; i<babies.size(); i++){
+                                        names.add(babies.get(i).getName());
+                                    }
+                           	}
+                       	}
+                            spinnerAdapter = new ArrayAdapter<String>(PublishRecordActivity.this, android.R.layout.simple_spinner_item, names);
                             spinnerAdapter.setDropDownViewResource(android.R.layout.select_dialog_singlechoice);
                             spinner.setAdapter(spinnerAdapter);
                             spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
                                 @Override
                                 public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
                                     Baby baby = babies.get(position);
-                                    babyId = baby.getId();
+                                    babyId = baby.getChild_id();
                                 }
 
                                 @Override
@@ -292,6 +317,11 @@ public class PublishRecordActivity extends BaseActivity implements View.OnClickL
                 progressDialog = new ProgressDialog(PublishRecordActivity.this);
                 progressDialog.setMessage("正在发布，请稍后");
                 progressDialog.show();
+                contentStr= content.getText().toString().trim();
+                if(contentStr.equals("")){
+                	 Toast.makeText(mContext, "请说点什么吧", Toast.LENGTH_SHORT).show();
+                	return;
+                }
                 uploadRecord();
                 break;
             case R.id.record_activity_delete:
@@ -464,7 +494,7 @@ public class PublishRecordActivity extends BaseActivity implements View.OnClickL
                 params.put("type","3");
                 params.put("child_id", babyId);
                 params.put("url", recordPath);
-                params.put("content", content.getText().toString());
+                params.put("content", contentStr);
                 if (isShare.isChecked()){
                     params.put("is_share", "1");
                 }

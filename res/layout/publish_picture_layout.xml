@@ -93,7 +93,7 @@
             android:background="@drawable/et_bule_bg"
             android:hint="说点什么吧..." />
 
-    <com.app.lovebaby.widget.NoScrollGridView
+    <com.xiaogang.ChildOne.widget.NoScrollGridView
             android:id="@+id/gridview_image"
             android:layout_width="match_parent"
             android:layout_height="match_parent"

@@ -62,7 +62,8 @@ public class FaceConversionUtil {
 	public SpannableString getExpressionString(Context context, String str) {
 		SpannableString spannableString = new SpannableString(str);
 		// 正则表达式比配字符串里是否含有表情，如： 我好[开心]啊
-		String zhengze = "\\[[^\\]]+\\]";
+		//String zhengze = "\\[[^\\]]+\\]";
+		String zhengze = "/s0[0-9]{2}";
 		// 通过传入的正则表达式来生成一个pattern
 		Pattern sinaPatten = Pattern.compile(zhengze, Pattern.CASE_INSENSITIVE);
 		try {
@@ -88,7 +89,7 @@ public class FaceConversionUtil {
 		}
 		Bitmap bitmap = BitmapFactory.decodeResource(context.getResources(),
 				imgId);
-		bitmap = Bitmap.createScaledBitmap(bitmap, 35, 35, true);
+		bitmap = Bitmap.createScaledBitmap(bitmap, 80, 80, true);
 		ImageSpan imageSpan = new ImageSpan(context, bitmap);
 		SpannableString spannable = new SpannableString(spannableString);
 		spannable.setSpan(imageSpan, 0, spannableString.length(),
@@ -127,7 +128,7 @@ public class FaceConversionUtil {
 			if (resId != 0) {
 				Bitmap bitmap = BitmapFactory.decodeResource(
 						context.getResources(), resId);
-				bitmap = Bitmap.createScaledBitmap(bitmap, 50, 50, true);
+				bitmap = Bitmap.createScaledBitmap(bitmap, 80, 80, true);
 				// 通过图片资源id来得到bitmap，用一个ImageSpan来包装
 				ImageSpan imageSpan = new ImageSpan(bitmap);
 				// 计算该图片名字的长度，也就是要替换的字符串的长度
@@ -207,11 +208,11 @@ public class FaceConversionUtil {
 				list.add(object);
 			}
 		}
-		if (list.size() == pageSize) {
+		/*if (list.size() == pageSize) {
 			ChatEmoji object = new ChatEmoji();
 			object.setId(R.drawable.face_del_icon);
 			list.add(object);
-		}
+		}*/
 		return list;
 	}
 }

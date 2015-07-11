@@ -1,5 +1,8 @@
 package com.xiaogang.ChildOne;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import android.app.Application;
 import android.app.Service;
 import android.content.Context;
@@ -12,6 +15,8 @@ import com.baidu.location.BDLocationListener;
 import com.baidu.location.GeofenceClient;
 import com.baidu.location.LocationClient;
 import com.baidu.mapapi.SDKInitializer;
+import com.huamaitel.api.HMDefines;
+import com.huamaitel.api.HMJniInterface;
 import com.nostra13.universalimageloader.cache.disc.naming.Md5FileNameGenerator;
 import com.nostra13.universalimageloader.core.DisplayImageOptions;
 import com.nostra13.universalimageloader.core.ImageLoader;
@@ -41,6 +46,10 @@ public static Double dwlocation_lontitude;
 public static DisplayImageOptions options;
 public static DisplayImageOptions txOptions;//头像图片
 public static DisplayImageOptions tpOptions;//详情页图片
+public static String uid;
+public static String is_student = "";
+
+
 
 private DBManager dbManager;
 
@@ -48,7 +57,18 @@ private DBManager dbManager;
 private static final String TAG = HomeBabyApplication.class.getName();
 
 private PushAgent mPushAgent;
-
+public static HMJniInterface hmControl = null;
+public static int serverId = 0;
+public static int treeId = 0;
+public static List<Integer> rootList;
+public static int curNodeHandle = 0;
+public static final String NODE_ID = "nodeId";
+public static final String CHANNEL = "channel";
+public static final String VIDEO_STREAM = "video_stream";
+public static int mUserId = 0;
+public static int mVideoHandle = 0;
+public static HMDefines.DeviceInfo mDeviceInfo = null;
+public static HMDefines.ChannelCapacity mChannelCapacity[] = null;
         @Override
         public void onCreate() {
             super.onCreate();
@@ -65,6 +85,7 @@ private PushAgent mPushAgent;
             mLocationClient.registerLocationListener(mMyLocationListener);
             mGeofenceClient = new GeofenceClient(getApplicationContext());
             mLocationClient.start();
+            rootList = new ArrayList<Integer>();
             mVibrator =(Vibrator)getApplicationContext().getSystemService(Service.VIBRATOR_SERVICE);
         }
 
@@ -148,4 +169,12 @@ public class MyLocationListener implements BDLocationListener {
             e.printStackTrace();
         }
     }
+    
+    
+    public static HMJniInterface getHmJniInterface() {
+		if (null == hmControl) {
+			hmControl = new HMJniInterface();
+		}
+		return hmControl;
+	}
 }
